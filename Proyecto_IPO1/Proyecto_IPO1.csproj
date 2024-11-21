@@ -67,6 +67,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Artista.cs" />
+    <Compile Include="Fichero.cs" />
     <Compile Include="formulario_Artista.xaml.cs">
       <DependentUpon>formulario_Artista.xaml</DependentUpon>
     </Compile>

@@ -19,9 +19,12 @@ namespace Proyecto_IPO1
     /// </summary>
     public partial class formulario_Artista : Window
     {
+        private Artista artista_actual = new Artista("Extremoduro",
+        "1989", "Robe Iniesta", "Rock transgresivo", null, "Aquí va el argumento");
         public formulario_Artista()
         {
             InitializeComponent();
+            DataContext = artista_actual;
         }
     }
 }
