@@ -1,12 +1,112 @@
-﻿<Window x:Class="Proyecto_IPO1.MainWindow"
+﻿<Window x:Name="VentanaPrincipal" x:Class="Eventos.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Proyecto_IPO1"
+        xmlns:local="clr-namespace:Eventos"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
+        Title="Login" 
+        Height="500" Width="800" 
+        WindowStartupLocation="CenterScreen" 
+        HorizontalContentAlignment="Stretch" 
+        VerticalContentAlignment="Stretch" 
+        MinHeight="450" MinWidth="700"  >
+
+    <Grid x:Name="pnlDisenoPrincipal">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70*"/>
+            <RowDefinition Height="70*"/>
+            <RowDefinition Height="40*"/>
+            <RowDefinition Height="40*"/>
+            <RowDefinition Height="40*"/>
+            <RowDefinition Height="40*"/>
+            <RowDefinition Height="70*"/>
+            <RowDefinition Height="40*"/>
+            <RowDefinition Height="45"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="160*"/>
+            <ColumnDefinition Width="66*"/>
+            <ColumnDefinition Width="144*"/>
+            <ColumnDefinition Width="144*"/>
+            <ColumnDefinition Width="66*"/>
+            <ColumnDefinition Width="160*"/>
+        </Grid.ColumnDefinitions>
+
+        <Rectangle x:Name="FondoVentana" 
+                   Grid.Row="0" Grid.Column="0"  Grid.RowSpan="9" Grid.ColumnSpan="6"
+                   RadiusX="1" RadiusY="1" 
+                   Stroke="Black" Opacity="0.6" 
+                   StrokeThickness="3" 
+                   RenderTransformOrigin="0.5,0.5">
+            <Rectangle.Fill>
+                <ImageBrush ImageSource="images/fondo_login.png"/>
+            </Rectangle.Fill>
+        </Rectangle>
+
+        <Rectangle x:Name="FondoLogin" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="4" Grid.RowSpan="6" 
+                   Fill="#FF424242" Margin="5" 
+                   RadiusX="10" RadiusY="10"/>
+        <Image x:Name="ImgUser" 
+               Margin="11,11,11,11" 
+               Grid.Column="1" 
+               Grid.Row="1" 
+               Source="images/default_avatar.jpg">
+            
+        </Image>
+        <Label x:Name="lblTituloLogin" 
+               Grid.Row="1" Grid.Column="2"
+               Content="Iniciar Sesión"  
+               Margin="5,16,0,10"  
+               FontSize="20" 
+               Foreground="#FFFDFBFB" 
+               VerticalContentAlignment="Center"/>
+        <Label x:Name="lblUsuario" 
+               Grid.Row="2" Grid.Column="2" 
+               Content="Usuario" 
+               Margin="5,10,0,0" 
+               FontSize="14"
+               Foreground="#FFFBFAFA" 
+               VerticalContentAlignment="Bottom" 
+               HorizontalContentAlignment="Stretch" />
+        <TextBox x:Name="txtUsuario" 
+                 Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2"  
+                 BorderThickness="2" 
+                 Margin="5" 
+                 VerticalContentAlignment="Center" />
+        <Label x:Name="lblContrasena" 
+               Grid.Row="4" Grid.Column="2"  
+               Content="Contraseña" 
+               FontSize="14" Foreground="#FFFBFAFA" 
+               Margin="5,10,0,0" 
+               VerticalContentAlignment="Bottom" 
+               HorizontalContentAlignment="Stretch" />
+        <Label x:Name="lblRecordarContrasena" 
+               FontSize="13"
+               Grid.Row="4" Grid.Column="3" 
+               Content="¿Olvidó su contraseña?" 
+               FontStyle="Italic" FontWeight="Bold"
+               Foreground="#FFA9C4F3"
+               HorizontalContentAlignment="Right" 
+               VerticalContentAlignment="Bottom" />
+        <PasswordBox x:Name="passContrasena" 
+                Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="2"
+                PasswordChar="*"
+                BorderThickness="2" 
+                Margin="5"  VerticalContentAlignment="Center" 
+                IsEnabled="False" />
+        <Button x:Name="btnLogin" 
+                Grid.Row="6" Grid.Column="2" Grid.ColumnSpan="2" 
+                Content="Iniciar Sesión" 
+                FontSize="14" FontWeight="Bold" 
+                Background="#FF6189CF" Foreground="White" 
+                Width="130" Height="40" 
+                Margin="0,0,0,10"/>
+        <Label x:Name="lblEstado" Grid.Row="8" Grid.ColumnSpan="6" 
+               Content="Estado de la aplicación" 
+               Margin="0,10,0,0" Background="White" 
+               Opacity="0.7" FontWeight="Bold" 
+               VerticalContentAlignment="Center" 
+               HorizontalContentAlignment="Center" />
     </Grid>
 </Window>

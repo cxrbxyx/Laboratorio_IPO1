@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace Proyecto_IPO1
+namespace Eventos
 {
     /// <summary>
     /// Lógica de interacción para App.xaml

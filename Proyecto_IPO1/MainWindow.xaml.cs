@@ -22,7 +22,7 @@ namespace Proyecto_IPO1
     {
         public MainWindow()
         {
-            InitializeComponent();
+            
         }
     }
 }
