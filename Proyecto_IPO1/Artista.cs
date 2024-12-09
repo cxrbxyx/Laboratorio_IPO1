@@ -16,16 +16,17 @@ namespace Proyecto_IPO1
         public Uri Caratula { set; get; }
         public List<string> reparto = new List<string>();
         public string Argumento { set; get; }
-    
 
-    public Artista(string nombre, string anio, String integrates,
-    String genero, Uri caratula, string argumento)
-    {
-        Nombre = nombre;
-        Anio = anio;
-        Integrates = integrates;
-        Genero = genero;
-        Caratula = caratula;
-        Argumento = argumento;
+
+        public Artista(string nombre, string anio, String integrates,
+        String genero, Uri caratula, string argumento)
+        {
+            Nombre = nombre;
+            Anio = anio;
+            Integrates = integrates;
+            Genero = genero;
+            Caratula = caratula;
+            Argumento = argumento;
+        }
     }
 }
