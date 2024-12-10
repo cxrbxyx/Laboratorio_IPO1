@@ -66,6 +66,8 @@ namespace Proyecto_IPO1
                 if (credencialesValidas)
                 {
                     MessageBox.Show("Inicio de sesión exitoso", "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
+                    formulario_Artista formulario_Artista = new formulario_Artista();
+                    formulario_Artista.Show();
                 }
                 else
                 {
