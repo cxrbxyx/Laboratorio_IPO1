@@ -66,8 +66,16 @@ namespace Proyecto_IPO1
                 if (credencialesValidas)
                 {
                     MessageBox.Show("Inicio de sesión exitoso", "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
-                    formulario_Artista formulario_Artista = new formulario_Artista();
-                    formulario_Artista.Show();
+                    try
+                    {
+                        formulario_Artista formulario_Artista = new formulario_Artista();
+                        formulario_Artista.Show();
+                        this.Close(); // Opcionalmente cierra la ventana actual.
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Error al abrir la ventana: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
                 }
                 else
                 {

@@ -39,6 +39,11 @@ namespace Proyecto_IPO1
             // Cargar contenido de prueba
             XmlDocument doc = new XmlDocument();
             var fichero = Application.GetResourceStream(new Uri("database/artistas.xml", UriKind.Relative)); doc.Load(fichero.Stream);
+            if (fichero == null)
+            {
+                MessageBox.Show("No se pudo cargar el archivo 'artistas.xml'. Verifica su existencia y configuración.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return new List<Artista>(); // Devuelve una lista vacía para evitar que la aplicación falle.
+            }
             foreach (XmlNode node in doc.DocumentElement.ChildNodes)
             {
                 var nuevaArtista = new Artista("", "", "", null, "",null);
