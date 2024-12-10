@@ -41,12 +41,13 @@ namespace Proyecto_IPO1
             var fichero = Application.GetResourceStream(new Uri("database/artistas.xml", UriKind.Relative)); doc.Load(fichero.Stream);
             foreach (XmlNode node in doc.DocumentElement.ChildNodes)
             {
-                var nuevaArtista = new Artista("", "", "", null, "");
+                var nuevaArtista = new Artista("", "", "", null, "",null);
                 nuevaArtista.Nombre = node.Attributes["Nombre"].Value;
                 nuevaArtista.Integrates = node.Attributes["Integrates"].Value;
                 nuevaArtista.Genero = node.Attributes["Genero"].Value;
                 nuevaArtista.Redes_sociales = new Uri(node.Attributes["Redes_sociales"].Value, UriKind.Relative);
                 nuevaArtista.Descripción = node.Attributes["Descripción"].Value;
+                nuevaArtista.Caratula = new Uri(node.Attributes["Caratula"].Value, UriKind.Relative);
 
                 listado.Add(nuevaArtista);
             }

@@ -14,17 +14,19 @@ namespace Proyecto_IPO1
         public string Genero { set; get; }
         public Uri Redes_sociales { set; get; }  
         public string Descripción { set; get; }
-        
+        public Uri Caratula { set; get; }
+
 
 
         public Artista(string nombre, String integrates,
-        String genero, Uri redes_sociales, string descripción)
+        String genero, Uri redes_sociales, string descripción , Uri caratula)
         {
             Nombre = nombre;
             Integrates = integrates;
             Genero = genero;
             Redes_sociales = redes_sociales;
             Descripción = descripción;
+            Caratula = caratula;
         }
     }
 }

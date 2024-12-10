@@ -11,15 +11,43 @@
             <TabItem Header="Ejemplo lista (ListBox)">
                 <Grid>
                     <Grid.ColumnDefinitions>
-                         <ColumnDefinition Width="217*"/>
-                         <ColumnDefinition Width="auto"/>
-                         <ColumnDefinition Width="344*"/>
+                        <ColumnDefinition Width="217*"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="344*"/>
                     </Grid.ColumnDefinitions>
-                    <ListBox x:Name="lstListaArtistas" Grid.Column="0" SelectedIndex="0" Margin="5"/>
-                        
+                    <ListBox x:Name="lstListaArtistas" Grid.Column="0" SelectedIndex="0" Margin="5">
+
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Width="32" Height="37"
+                                         Source="{Binding Caratula}"/>
+                                <TextBlock VerticalAlignment="Center"
+                                        Margin="10,0,0,0"
+                                        Text="{Binding Nombre}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                        <ListBox.ItemContainerStyle>
+                            <Style TargetType="ListBoxItem">
+                                <Setter Property="Margin" Value="2"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter Property="Foreground" Value="Blue"/>
+                                        <Setter Property="FontWeight" Value="Bold"/>
+                                        <Setter Property="BorderBrush" Value="Blue"/>
+                                        <Setter Property="BorderThickness" Value="3"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </ListBox.ItemContainerStyle>
+                    </ListBox>
+
                     <GridSplitter Grid.Column="1" Width="5"
                         HorizontalAlignment="Stretch" />
-                    <StackPanel x:Name="spDetallesArtista" Grid.Column="2" Orientation="Vertical">
+                    <StackPanel x:Name="spDetallesArtistas" Grid.Column="2" Orientation="Vertical">
+                        <Label x:Name="lblTitulo" FontWeight="Bold" FontSize="20" 
+                               Content="{Binding ElementName=lstListaPArtistas,Path=SelectedItem.Nombre}"/>
                     </StackPanel>
                 </Grid>
             </TabItem>
