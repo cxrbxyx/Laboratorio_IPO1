@@ -47,7 +47,7 @@
                         HorizontalAlignment="Stretch" />
                     <StackPanel x:Name="spDetallesArtistas" Grid.Column="2" Orientation="Vertical">
                         <Label x:Name="lblTitulo" FontWeight="Bold" FontSize="20" 
-                               Content="{Binding ElementName=lstListaPArtistas,Path=SelectedItem.Nombre}"/>
+                                Content="{Binding ElementName=lstListaPArtistas,Path=SelectedItem.Nombre}"/>
                     </StackPanel>
                 </Grid>
             </TabItem>

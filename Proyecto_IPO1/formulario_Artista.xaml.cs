@@ -25,12 +25,18 @@ namespace Proyecto_IPO1
         public formulario_Artista()
         {
             InitializeComponent();
+            try
+            {
+                lista_artistas = new List<Artista>();
 
-            lista_artistas = new List<Artista>();
-
-            lista_artistas = CargarContenidoXML();
-
-            lstListaArtistas.ItemsSource = lista_artistas;
+                lista_artistas = CargarContenidoXML();
+                MessageBox.Show("Error al cargar los artistas: " + lista_artistas);
+                lstListaArtistas.ItemsSource = lista_artistas;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar los artistas: " + ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private List<Artista> CargarContenidoXML()
