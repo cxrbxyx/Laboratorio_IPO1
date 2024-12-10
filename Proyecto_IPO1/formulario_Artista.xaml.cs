@@ -43,6 +43,13 @@ namespace Proyecto_IPO1
         {
             List<Artista> listado = new List<Artista>();
             // Cargar contenido de prueba
+            var fichero = Application.GetResourceStream(new Uri("database/artistas.xml", UriKind.Relative));
+            if (fichero == null)
+            {
+                MessageBox.Show("No se pudo cargar el archivo XML. Verifica su ubicación y configuración.",
+                                "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return listado;
+            }
             XmlDocument doc = new XmlDocument();
             var fichero = Application.GetResourceStream(new Uri("database/artistas.xml", UriKind.Relative)); doc.Load(fichero.Stream);
             if (fichero == null)
@@ -52,13 +59,27 @@ namespace Proyecto_IPO1
             }
             foreach (XmlNode node in doc.DocumentElement.ChildNodes)
             {
-                var nuevaArtista = new Artista("", "", "", null, "",null);
-                nuevaArtista.Nombre = node.Attributes["Nombre"].Value;
-                nuevaArtista.Integrates = node.Attributes["Integrates"].Value;
-                nuevaArtista.Genero = node.Attributes["Genero"].Value;
-                nuevaArtista.Redes_sociales = new Uri(node.Attributes["Redes_sociales"].Value, UriKind.Relative);
-                nuevaArtista.Descripción = node.Attributes["Descripción"].Value;
-                nuevaArtista.Caratula = new Uri(node.Attributes["Caratula"].Value, UriKind.Relative);
+                // Crear una instancia vacía del objeto Artista
+                var nuevaArtista = new Artista("", "", "", null, "", null);
+                
+                // Verificar y asignar valores de los atributos de manera segura
+                if (node.Attributes["Nombre"] != null)
+                    nuevaArtista.Nombre = node.Attributes["Nombre"].Value;
+
+                if (node.Attributes["Integrates"] != null)
+                    nuevaArtista.Integrates = node.Attributes["Integrates"].Value;
+
+                if (node.Attributes["Genero"] != null)
+                    nuevaArtista.Genero = node.Attributes["Genero"].Value;
+
+                if (node.Attributes["Redes_sociales"] != null)
+                    nuevaArtista.Redes_sociales = new Uri(node.Attributes["Redes_sociales"].Value, UriKind.Relative);
+
+                if (node.Attributes["Descripción"] != null)
+                    nuevaArtista.Descripción = node.Attributes["Descripción"].Value;
+
+                if (node.Attributes["Caratula"] != null)
+                    nuevaArtista.Caratula = new Uri(node.Attributes["Caratula"].Value, UriKind.Relative);
 
                 listado.Add(nuevaArtista);
             }
