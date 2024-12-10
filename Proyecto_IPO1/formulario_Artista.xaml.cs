@@ -20,17 +20,14 @@ namespace Proyecto_IPO1
     /// </summary>
     public partial class formulario_Artista : Window
     {
-        List<Artista> lista_artistas; 
 
         public formulario_Artista()
         {
             InitializeComponent();
             try
             {
-                lista_artistas = new List<Artista>();
-
+                List<Artista> lista_artistas = new List<Artista>();
                 lista_artistas = CargarContenidoXML();
-                MessageBox.Show("Error al cargar los artistas: " + lista_artistas);
                 lstListaArtistas.ItemsSource = lista_artistas;
             }
             catch (Exception ex)
@@ -42,48 +39,25 @@ namespace Proyecto_IPO1
         private List<Artista> CargarContenidoXML()
         {
             List<Artista> listado = new List<Artista>();
-            // Cargar contenido de prueba
-            var fichero = Application.GetResourceStream(new Uri("database/artistas.xml", UriKind.Relative));
-            if (fichero == null)
-            {
-                MessageBox.Show("No se pudo cargar el archivo XML. Verifica su ubicación y configuración.",
-                                "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            XmlDocument database = new XmlDocument();
+                var fichero = Application.GetResourceStream(new Uri("database/artistas.xml", UriKind.Relative));
+                database.Load(fichero.Stream);
+
+                foreach (XmlNode node in database.DocumentElement.ChildNodes)
+                {
+                    var artista = new Artista("", "", "", null, "", null)
+                    {
+                        Nombre = node.Attributes["Nombre"].Value,
+                        Integrantes = node.Attributes["Integrantes"].Value,
+                        Genero = node.Attributes["Genero"].Value,
+                        Redes_sociales = new Uri(node.Attributes["Redes_sociales"].Value, UriKind.Absolute),
+                        Descripcion = node.Attributes["Descripcion"].Value,
+                        Caratula = new Uri(node.Attributes["Caratula"].Value, UriKind.Relative)
+                    };
+                    listado.Add(artista);
+
+                }
                 return listado;
-            }
-            XmlDocument doc = new XmlDocument();
-            var fichero = Application.GetResourceStream(new Uri("database/artistas.xml", UriKind.Relative)); doc.Load(fichero.Stream);
-            if (fichero == null)
-            {
-                MessageBox.Show("No se pudo cargar el archivo 'artistas.xml'. Verifica su existencia y configuración.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                return new List<Artista>(); // Devuelve una lista vacía para evitar que la aplicación falle.
-            }
-            foreach (XmlNode node in doc.DocumentElement.ChildNodes)
-            {
-                // Crear una instancia vacía del objeto Artista
-                var nuevaArtista = new Artista("", "", "", null, "", null);
-                
-                // Verificar y asignar valores de los atributos de manera segura
-                if (node.Attributes["Nombre"] != null)
-                    nuevaArtista.Nombre = node.Attributes["Nombre"].Value;
-
-                if (node.Attributes["Integrates"] != null)
-                    nuevaArtista.Integrates = node.Attributes["Integrates"].Value;
-
-                if (node.Attributes["Genero"] != null)
-                    nuevaArtista.Genero = node.Attributes["Genero"].Value;
-
-                if (node.Attributes["Redes_sociales"] != null)
-                    nuevaArtista.Redes_sociales = new Uri(node.Attributes["Redes_sociales"].Value, UriKind.Relative);
-
-                if (node.Attributes["Descripción"] != null)
-                    nuevaArtista.Descripción = node.Attributes["Descripción"].Value;
-
-                if (node.Attributes["Caratula"] != null)
-                    nuevaArtista.Caratula = new Uri(node.Attributes["Caratula"].Value, UriKind.Relative);
-
-                listado.Add(nuevaArtista);
-            }
-            return listado;
         }
     }
 }

@@ -10,22 +10,22 @@ namespace Proyecto_IPO1
     class Artista
     {
         public string Nombre { set; get; }
-        public string Integrates { set; get; }
+        public string Integrantes { set; get; }
         public string Genero { set; get; }
         public Uri Redes_sociales { set; get; }  
-        public string Descripción { set; get; }
+        public string Descripcion { set; get; }
         public Uri Caratula { set; get; }
 
 
 
-        public Artista(string nombre, String integrates,
-        String genero, Uri redes_sociales, string descripción , Uri caratula)
+        public Artista(string nombre, String integrantes,
+        String genero, Uri redes_sociales, string descripcion , Uri caratula)
         {
             Nombre = nombre;
-            Integrates = integrates;
+            Integrantes = integrantes;
             Genero = genero;
             Redes_sociales = redes_sociales;
-            Descripción = descripción;
+            Descripcion = descripcion;
             Caratula = caratula;
         }
     }

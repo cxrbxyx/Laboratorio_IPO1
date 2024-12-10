@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.IO;
 using System.Text.Json;
+using System.Xml;
 
 
 
@@ -36,11 +37,7 @@ namespace Proyecto_IPO1
         {
             InitializeComponent();
             usuarios = new List<Usuario>();
-            //CargarUsuariosDesdeCSV(usuarios);
-            Usuario user = new Usuario();
-            user.NombreUsuario = "admin";
-            user.Contrasena = "admin";
-            usuarios.Add(user);
+            usuarios = CargaUsuarios();
         }
 
 
@@ -66,11 +63,11 @@ namespace Proyecto_IPO1
                 if (credencialesValidas)
                 {
                     MessageBox.Show("Inicio de sesión exitoso", "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
-                    
-                        formulario_Artista formulario_Artista = new formulario_Artista();
-                        formulario_Artista.Show();
-                        this.Close(); // Opcionalmente cierra la ventana actual.
-                    
+
+                    formulario_Artista formulario_Artista = new formulario_Artista();
+                    formulario_Artista.Show();
+                    this.Close(); // Opcionalmente cierra la ventana actual.
+
                 }
                 else
                 {
@@ -88,45 +85,31 @@ namespace Proyecto_IPO1
 
 
 
-        //TODO: Implementar la carga de usuarios desde un archivo CSV
-        /* public void CargarUsuariosDesdeCSV(List<Usuario> usuarios)
-         {
-             usuarios.Clear();
-             string rutaArchivo = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "database", "user_database.csv");
-             Console.WriteLine(rutaArchivo);
-             try
-             {
-                 // Leer todas las líneas del archivo CSV
-                 var lineas = File.ReadAllLines(rutaArchivo);
+        //TODO: Implementar la carga de usuarios desde un archivo XML
+        private List<Usuario> CargaUsuarios()
+        {
+            List<Usuario> usuarios = new List<Usuario>();
 
-                 // Omitir la primera línea si contiene encabezados
-                 for (int i = 1; i < lineas.Length; i++)
-                 {
-                     var linea = lineas[i];
+            XmlDocument database = new XmlDocument();
+            var fichero = Application.GetResourceStream(new Uri("database/user_database.xml", UriKind.Relative));
+            database.Load(fichero.Stream);
 
-                     // Separar los valores por coma (asumiendo que el delimitador es una coma)
-                     var partes = linea.Split(',');
+            foreach (XmlNode node in database.DocumentElement.ChildNodes)
+            {
 
-                     if (partes.Length >= 2)
-                     {
-                         Usuario usuario = new Usuario
-                         {
-                             NombreUsuario = partes[0].Trim(),
-                             Contrasena = partes[1].Trim()
-                         };
+                var nuevoUsuario = new Usuario("", "")
+                {
+                    NombreUsuario = node.Attributes["NombreUsuario"].Value,
+                    Contrasena = node.Attributes["Contrasena"].Value
+                };
 
-                         usuarios.Add(usuario);
-                     }
-                 }
-             }
-             catch (Exception ex)
-             {
-                 Console.WriteLine($"Error al cargar usuarios: {ex.Message}");
-             }
-         }
-        */
+                usuarios.Add(nuevoUsuario);
+
+            }
+            return usuarios;
+        }
+
+
+
     }
-
-
-
 }

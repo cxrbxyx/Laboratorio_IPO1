@@ -16,18 +16,17 @@
                         <ColumnDefinition Width="344*"/>
                     </Grid.ColumnDefinitions>
                     <ListBox x:Name="lstListaArtistas" Grid.Column="0" SelectedIndex="0" Margin="5">
-
-                    <ListBox.ItemTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal">
-                                <Image Width="32" Height="37"
-                                         Source="{Binding Caratula}"/>
-                                <TextBlock VerticalAlignment="Center"
-                                        Margin="10,0,0,0"
-                                        Text="{Binding Nombre}"/>
-                            </StackPanel>
-                        </DataTemplate>
-                    </ListBox.ItemTemplate>
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Width="32" Height="37"
+                                            Source="{Binding Caratula}"/>
+                                    <TextBlock VerticalAlignment="Center"
+                                            Margin="10,0,0,0"
+                                            Text="{Binding Nombre}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
                         <ListBox.ItemContainerStyle>
                             <Style TargetType="ListBoxItem">
                                 <Setter Property="Margin" Value="2"/>

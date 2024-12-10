@@ -8,7 +8,14 @@ namespace Proyecto_IPO1
 {
     public class Usuario
     {
-        public string NombreUsuario { get; set; }
-        public string Contrasena { get; set; }
+        public String NombreUsuario { get; set; }
+        
+        public String Contrasena { get; set; }
+
+        public Usuario(string nombreUsuario, string contrasena)
+        {
+            NombreUsuario = nombreUsuario ?? throw new ArgumentNullException(nameof(nombreUsuario));
+            Contrasena = contrasena ?? throw new ArgumentNullException(nameof(contrasena));
+        }
     }
 }
