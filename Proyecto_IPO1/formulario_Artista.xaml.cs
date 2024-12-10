@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Xml;
 
 namespace Proyecto_IPO1
 {
@@ -19,12 +20,37 @@ namespace Proyecto_IPO1
     /// </summary>
     public partial class formulario_Artista : Window
     {
-        private Artista artista_actual = new Artista("Extremoduro",
-        "1989", "Robe Iniesta", "Rock transgresivo", null, "Aquí va el argumento");
+        List<Artista> lista_artistas; 
+
         public formulario_Artista()
         {
             InitializeComponent();
-            DataContext = artista_actual;
+
+            lista_artistas = new List<Artista>();
+
+            lista_artistas = CargarContenidoXML();
+
+            lstListaArtistas.ItemsSource = lista_artistas;
+        }
+
+        private List<Artista> CargarContenidoXML()
+        {
+            List<Artista> listado = new List<Artista>();
+            // Cargar contenido de prueba
+            XmlDocument doc = new XmlDocument();
+            var fichero = Application.GetResourceStream(new Uri("database/artistas.xml", UriKind.Relative)); doc.Load(fichero.Stream);
+            foreach (XmlNode node in doc.DocumentElement.ChildNodes)
+            {
+                var nuevaArtista = new Artista("", "", "", null, "");
+                nuevaArtista.Nombre = node.Attributes["Nombre"].Value;
+                nuevaArtista.Integrates = node.Attributes["Integrates"].Value;
+                nuevaArtista.Genero = node.Attributes["Genero"].Value;
+                nuevaArtista.Redes_sociales = new Uri(node.Attributes["Redes_sociales"].Value, UriKind.Relative);
+                nuevaArtista.Descripción = node.Attributes["Descripción"].Value;
+
+                listado.Add(nuevaArtista);
+            }
+            return listado;
         }
     }
 }

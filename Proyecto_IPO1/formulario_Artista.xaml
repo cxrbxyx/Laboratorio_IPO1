@@ -7,58 +7,29 @@
         mc:Ignorable="d"
         Title="formulario_Artista" Height="450" Width="800">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="176*"/>
-            <ColumnDefinition Width="105*"/>
-            <ColumnDefinition Width="247*"/>
-            <ColumnDefinition Width="104*"/>
-            <ColumnDefinition Width="168*"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="105*"/>
-            <RowDefinition Height="95*"/>
-            <RowDefinition Height="97*"/>
-            <RowDefinition Height="137*"/>
-        </Grid.RowDefinitions>
-        <StackPanel Grid.RowSpan="4" Grid.ColumnSpan="5">
-            <TextBlock Text="{Binding Nombre}" />
-            <TextBlock Text="{Binding Edad}" />
-        </StackPanel>
-
-        <TextBox x:Name="txtArtista" FontSize="20" Text="{Binding Nombre}" Margin="18,0,15,0" Grid.RowSpan="4" Grid.Column="1" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="3">
-            <TextBox.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="0.138"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </TextBox.RenderTransform>
-        </TextBox>
-        <Label Content="Año *:"
-               Grid.Row="0" 
-               Grid.RowSpan="4" 
-               Grid.ColumnSpan="5" />
-        <TextBox x:Name="txtAnio" 
-                 Grid.Row="0" 
-                 Text="{Binding Anio}" 
-                 Grid.RowSpan="4" 
-                 Grid.ColumnSpan="5"/>
-        <Label Content="Director:" 
-               Grid.RowSpan="4" 
-               Grid.ColumnSpan="5"/>
-        <TextBox x:Name="txtDirector"
-                 Grid.RowSpan="4" 
-                 Grid.ColumnSpan ="5" />
-        <Label Content="Genero *:" 
-               Grid.RowSpan="4" 
-               Grid.ColumnSpan="5"/>
-        <TextBox x:Name="txtGenero" Text="{Binding Genero}" 
-                 Grid.RowSpan="4" 
-                 Grid.ColumnSpan="5"/>
-        <Label Content="Género:"
-               Grid.RowSpan="4" 
-               Grid.ColumnSpan="5"/>
+        <TabControl x:Name="tcPestanas">
+            <TabItem Header="Ejemplo lista (ListBox)">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                         <ColumnDefinition Width="217*"/>
+                         <ColumnDefinition Width="auto"/>
+                         <ColumnDefinition Width="344*"/>
+                    </Grid.ColumnDefinitions>
+                    <ListBox x:Name="lstListaArtistas" Grid.Column="0" SelectedIndex="0" Margin="5"/>
+                        
+                    <GridSplitter Grid.Column="1" Width="5"
+                        HorizontalAlignment="Stretch" />
+                    <StackPanel x:Name="spDetallesArtista" Grid.Column="2" Orientation="Vertical">
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+        
+            <TabItem Header="Ejemplo tabla (DataGrid)">
+                <Grid>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    
     </Grid>
 
 </Window>
