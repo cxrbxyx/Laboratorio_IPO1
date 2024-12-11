@@ -105,6 +105,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="formulario_Festivales.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -114,6 +118,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Artista.cs" />
+    <Compile Include="Festival.cs" />
+    <Compile Include="formulario_Festivales.xaml.cs">
+      <DependentUpon>formulario_Festivales.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Usuario.cs" />
     <Compile Include="Fichero.cs" />
     <Compile Include="formulario_Artista.xaml.cs">
@@ -179,6 +187,65 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="database\user_database.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\DJNANO.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\marea.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\metallica.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\badbunny.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\laraiz.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\ironmaiden.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\natosywaor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\plateroytu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="database\festivales.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Cartelera_Viñarock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\viñarock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Cartelera_Coachella.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\coachella.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\dreambeach.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Cartelera_Dreambeach.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Cartelera_ResurrectionFest.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\resurrectionfest.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Cartelera_MadridSalvaje.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\madridsalvaje.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

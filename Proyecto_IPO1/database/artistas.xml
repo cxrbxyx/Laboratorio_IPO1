@@ -1,7 +1,7 @@
 <Artistas>
 	<Artista 
 		Nombre="Extremoduro" 
-		Integrantes ="Robe Iniesta, Iñaki" 
+		Integrantes ="Cantante: Robe Iniesta Numero: 66666666 Dirección: C/ si te vas,5 Correo: LeyInata@extremaydura.es, Guitarrista: Iñaki Anton Numero: 44444444 Dirección C/Locura transitoria,10 Correo: QuemandotusRecuerdos@extremaydura.com" 
         Genero ="Rock transgresivo" 
 		Redes_sociales="https://www.extremoduro.com/es/inicio"
 		Descripcion="Hay que dejar el camino social alquitranado porque en él se nos quedan pegadas las pezuñas hay que volar libre al sol y al viento repartiendo el amor que tengas dentro"
@@ -13,6 +13,66 @@
 		Genero="Electrónica"
 		Redes_sociales="https://www.facebook.com/djnano/"
 		Descripcion="DJ Nano es uno de los artistas más influyentes de la escena electrónica en España. Con más de 25 años de carrera, ha sido el primer DJ en actuar en el Palacio de los Deportes de Madrid y en el Estadio Santiago Bernabéu."
-		Caratula="images/dj_nano.png"
+		Caratula="images/DJNANO.png"
 		Festivales="A Summer Story"/>
+	<Artista
+		Nombre="Marea"
+		Integrantes="Cantante: Kutsi Romero, Batería: Alen Ayerdi, Bajo: Eduardo Beaumont, Guitarras: Cesar Ramallo y Kolibrí Díaz"
+		Genero="Rock Español"
+		Redes_sociales="https://losmarea.com"
+		Descripcion="Marea es una banda de rock fundada por Kutxi Romero en Berriozar, Navarra, a finales de 1997, siendo sus componentes, desde entonces hasta fecha de hoy, el mismo Kutxi Romero como letrista y cantante; Kolibrí Díaz y César Ramallo a las guitarras; Edu Beaumont “Piñas” al bajo y Alén Ayerdi a la batería"
+		Caratula="images/marea.png"
+		Festivales="Viñarock"/>
+	<Artista
+		Nombre="Metalica"
+		Integrantes="Cantante: James Hetfield, Batería: Lars Ulrich, Bajo: Robert Trujillo, Guitarras: Kirk Hammett"
+		Genero="Metal"
+		Redes_sociales="https://www.metallica.com"
+		Descripcion="Metallica es una banda de trash metal, un género musical caracterizado por rápidos cortes de guitarra y una percusión acelerada, y uno de los grupos más populares de la historia gracias a su particular ejecución tanto vocal como instrumental"
+		Caratula="images/metallica.png"
+		Festivales="Resurection Fest"/>
+	<Artista
+		Nombre="La Raíz"
+		Integrantes="Cantante: Pablo Sánchez, Guitarra: Edu Cayuela, Guitarra: Julio Maloa, Bajo: Adri Faus, Batería: José Carlos García, Teclado: Marcos Úbeda"
+		Genero="Fusión Rock/Ska"
+		Redes_sociales="https://laraizoficial.es"
+		Descripcion="La Raíz es un grupo de música español originario de Gandía que mezcla estilos como el rock, ska y reggae, con letras cargadas de mensaje social y político."
+		Caratula="images/laraiz.png"
+		Festivales="Viñarock, Arenal Sound"/>
+
+	<Artista
+		Nombre="Bad Bunny"
+		Integrantes="Benito Antonio Martínez Ocasio"
+		Genero="Reguetón/Trap Latino"
+		Redes_sociales="https://badbunny.pro"
+		Descripcion="Bad Bunny es un cantante, rapero y compositor puertorriqueño. Su estilo musical ha revolucionado el panorama del reguetón y el trap latino, logrando un impacto global."
+		Caratula="images/badbunny.png"
+		Festivales="Coachella, Primavera Sound"/>
+
+	<Artista
+		Nombre="Iron Maiden"
+		Integrantes="Vocalista: Bruce Dickinson, Guitarra: Dave Murray, Guitarra: Adrian Smith, Bajo: Steve Harris, Batería: Nicko McBrain"
+		Genero="Heavy Metal"
+		Redes_sociales="https://www.ironmaiden.com"
+		Descripcion="Iron Maiden es una de las bandas de heavy metal más emblemáticas del mundo, conocida por su energía en directo y sus icónicas canciones como 'The Trooper' y 'Fear of the Dark'."
+		Caratula="images/ironmaiden.png"
+		Festivales="Download Festival, Rock in Rio"/>
+
+	<Artista
+		Nombre="Natos y Waor"
+		Integrantes="Natos: Gonzalo Cidre, Waor: Fernando Hisado"
+		Genero="Rap"
+		Redes_sociales="https://www.natosywaor.com"
+		Descripcion="Natos y Waor son un dúo de rap español caracterizado por letras crudas y auténticas que narran historias de vida urbana, destacándose como referentes en la escena del rap underground."
+		Caratula="images/natosywaor.png"
+		Festivales="Viñarock, Mad Cool"/>
+
+	<Artista
+		Nombre="Platero y Tú"
+		Integrantes="Vocalista y Guitarra: Fito Cabrales, Guitarra: Iñaki 'Uoho' Antón, Bajo: Juantxu Olano, Batería: Jesús García"
+		Genero="Rock Urbano"
+		Redes_sociales="https://www.facebook.com/SomosLosPlatero"
+		Descripcion="Platero y Tú es una banda de rock urbano española formada en Bilbao, conocida por su estilo directo y letras cercanas. Es una de las precursoras del rock urbano en España."
+		Caratula="images/plateroytu.png"
+		Festivales="Viñarock"/>
 </Artistas>
