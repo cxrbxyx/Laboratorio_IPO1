@@ -5,17 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Proyecto_IPO1"
         mc:Ignorable="d"
-        Title="formulario_Artista" Height="450" Width="800">
+        Title="Artistas" Height="720" Width="1280">
     <Grid>
         <TabControl x:Name="tcPestanas">
-            <TabItem Header="Ejemplo lista (ListBox)">
+            <TabItem Header="Lista de artistas">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="217*"/>
                         <ColumnDefinition Width="auto"/>
                         <ColumnDefinition Width="344*"/>
                     </Grid.ColumnDefinitions>
-                    <ListBox x:Name="lstListaArtistas" Grid.Column="0" SelectedIndex="0" Margin="5">
+                    <ListBox x:Name="lstListaArtistas" Grid.Column="0" SelectedIndex="0" Margin="5" Background="#FFC8C8C8">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
@@ -40,23 +40,47 @@
                                 </Style.Triggers>
                             </Style>
                         </ListBox.ItemContainerStyle>
+                        <ListBox.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem x:Name="miAniadirItemLB" Header="Añadir ítem" >
+                                    <MenuItem.Icon>
+                                        <Image Source="images/add_c.png"/>
+                                    </MenuItem.Icon>
+                                </MenuItem>
+                                <MenuItem x:Name="miEliminarItemLB" Header="Eliminar ítem">
+                                    <MenuItem.Icon>
+                                        <Image Source="images/remove_c.png"/>
+                                    </MenuItem.Icon>
+                                </MenuItem>
+                            </ContextMenu>
+                        </ListBox.ContextMenu>
                     </ListBox>
 
                     <GridSplitter Grid.Column="1" Width="5"
                         HorizontalAlignment="Stretch" />
-                    <StackPanel x:Name="spDetallesArtistas" Grid.Column="2" Orientation="Vertical">
-                        <Label x:Name="lblTitulo" FontWeight="Bold" FontSize="20" 
-                                Content="{Binding ElementName=lstListaPArtistas,Path=SelectedItem.Nombre}"/>
+                    <StackPanel x:Name="spDetallesArtistas" Grid.Column="2" Orientation="Vertical" Background="#FFA5A5A5">
+                        <Label x:Name="lblArtista" FontWeight="Bold" FontSize="20" Content="{Binding ElementName=lstListaArtistas,Path=SelectedItem.Nombre}"/>
+                        <Image x:Name="imgCaratula" Width="250" Height="250" HorizontalAlignment="Left" Source="{Binding SelectedItem.Caratula, ElementName=lstListaArtistas}" />
+                        <Label x:Name="lblDescripcion" FontSize="14" FontWeight="Bold" Content="Descripción"/>
+                        <TextBlock x:Name="txtDescripcion" TextWrapping="Wrap" Text="{Binding SelectedItem.Descripcion, ElementName=lstListaArtistas}"/>
+                        <Label x:Name="lblIntegrantes" FontSize="14" FontWeight="Bold" Content="Integrantes"/>
+                        <TextBlock x:Name="txtIntegrantes" TextWrapping="Wrap" Text="{Binding SelectedItem.Integrantes, ElementName=lstListaArtistas}"/>
+                        <Label x:Name="lblGenero" FontSize="14" FontWeight="Bold" Content="Género"/>
+                        <TextBlock x:Name="txtGenero" TextWrapping="Wrap" Text="{Binding SelectedItem.Genero, ElementName=lstListaArtistas}"/>
+                        <Label x:Name="lblRedesSociales" FontSize="14" FontWeight="Bold" Content="Redes Sociales"/>
+                        <TextBlock x:Name="txtRedesSociales" TextWrapping="Wrap" Text="{Binding SelectedItem.Redes_sociales, ElementName=lstListaArtistas}" FontStyle="Italic" TextDecorations="Underline" Foreground="#FF0061FF"/>
+                        <Label x:Name="lblFestivales" FontSize="14" FontWeight="Bold" Content="Festivales donde participa"/>
+                        <TextBlock x:Name="txtFestivales" TextWrapping="Wrap" Text="{Binding SelectedItem.Festivales, ElementName=lstListaArtistas}"/>
                     </StackPanel>
                 </Grid>
             </TabItem>
-        
+
             <TabItem Header="Ejemplo tabla (DataGrid)">
                 <Grid>
                 </Grid>
             </TabItem>
         </TabControl>
-    
+
     </Grid>
 
 </Window>

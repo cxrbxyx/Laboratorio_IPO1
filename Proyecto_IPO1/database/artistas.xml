@@ -1,6 +1,18 @@
 <Artistas>
-	<Artista Nombre="Extremoduro" Integrantes ="Robe Iniesta, Iñaki" 
-            Genero ="Rock transgresivo" Redes_sociales="https://www.extremoduro.com/es/inicio"
-			Descripcion="Hay que dejar el camino social alquitranado porque en él se nos quedan pegadas las pezuñas hay que volar libre al sol y al viento repartiendo el amor que tengas dentro"
-			Caratula="images/extremoduro.png"/>
+	<Artista 
+		Nombre="Extremoduro" 
+		Integrantes ="Robe Iniesta, Iñaki" 
+        Genero ="Rock transgresivo" 
+		Redes_sociales="https://www.extremoduro.com/es/inicio"
+		Descripcion="Hay que dejar el camino social alquitranado porque en él se nos quedan pegadas las pezuñas hay que volar libre al sol y al viento repartiendo el amor que tengas dentro"
+		Caratula="images/extremoduro.png"
+		Festivales ="Viñarock"/>
+	<Artista
+		Nombre="DJ Nano"
+		Integrantes="Nano"
+		Genero="Electrónica"
+		Redes_sociales="https://www.facebook.com/djnano/"
+		Descripcion="DJ Nano es uno de los artistas más influyentes de la escena electrónica en España. Con más de 25 años de carrera, ha sido el primer DJ en actuar en el Palacio de los Deportes de Madrid y en el Estadio Santiago Bernabéu."
+		Caratula="images/dj_nano.png"
+		Festivales="A Summer Story"/>
 </Artistas>

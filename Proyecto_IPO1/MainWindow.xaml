@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Eventos"
         mc:Ignorable="d"
         Title="Login" 
-        Height="500" Width="800" 
+        Height="360" Width="640" 
         WindowStartupLocation="CenterScreen" 
         HorizontalContentAlignment="Stretch" 
         VerticalContentAlignment="Stretch" 
