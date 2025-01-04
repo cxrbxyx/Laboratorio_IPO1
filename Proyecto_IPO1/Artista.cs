@@ -16,11 +16,14 @@ namespace Proyecto_IPO1
         public string Descripcion { set; get; }
         public Uri Caratula { set; get; }
 
+        public string Contacto { set; get; }    
+
+        public string Estado { set; get; }
         public string Festivales { set; get; }
 
 
         public Artista(string nombre, string integrantes,
-        string genero, Uri redes_sociales, string descripcion , Uri caratula, string festivales)
+        string genero, Uri redes_sociales, string descripcion , Uri caratula, string contacto, string estado, string festivales)
         {
             Nombre = nombre;
             Integrantes = integrantes;
@@ -28,6 +31,8 @@ namespace Proyecto_IPO1
             Redes_sociales = redes_sociales;
             Descripcion = descripcion;
             Caratula = caratula;
+            Contacto = contacto;
+            Estado = estado;
             Festivales = festivales;
         }
     }

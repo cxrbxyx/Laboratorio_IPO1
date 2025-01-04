@@ -79,10 +79,10 @@
                                         TextBlock.FontSize="18" Grid.ColumnSpan="2" >
 
                                     <WrapPanel Orientation="Horizontal">
-                                        <Label Content="Título *:" Foreground="White"
+                                        <Label Content="Nombre:" Foreground="White"
                                           FontSize="20"/>
                                         <TextBox x:Name="txtPelicula" Width="500"
-                                           FontSize="20"/>
+                                           FontSize="20" Text="{Binding ElementName=lstListaArtistas,Path=SelectedItem.Nombre}"/>
                                     </WrapPanel>
                                 </Border>
 
@@ -114,7 +114,7 @@
                                                 BorderThickness="2" Margin="5,2,2,2" >
                                                 <Image x:Name="imgCaratula"
                                                     Width="100" Height="120"                                         
-                                                    Source="{Binding SelectedItem.Caratula, ElementName=lstListaFestivales}" 
+                                                    Source="{Binding SelectedItem.Caratula, ElementName=lstListaArtistas}" 
                                                     Stretch="Fill"/>
                                             </Border>
 
@@ -126,8 +126,17 @@
                                                     Foreground="Blue"/>
                                         </Grid>
 
-                                        <Label x:Name="lblArtista" Grid.Row="0" Grid.Column="1" FontWeight="Bold" FontSize="15" Content="Nombre: "/>
-                                        <TextBox x:Name="txtAnio" Grid.Row="0" Grid.Column="2" Text="{Binding ElementName=lstListaArtistas,Path=SelectedItem.Nombre}"/>
+                                        <Label x:Name="lblArtista" Grid.Row="0" Grid.Column="1" FontWeight="Bold" FontSize="15" Content="Contacto: "/>
+                                        <TextBox x:Name="txtAnio" Grid.Row="0" Grid.Column="2" Text="{Binding SelectedItem.Contacto, ElementName=lstListaArtistas}"/>
+                                        <Label x:Name="lblWEB" Grid.Row="1" Grid.Column="1" FontSize="15" Content="web sitie: "/>
+                                        <TextBox x:Name="txtweb" Grid.Row="1" Grid.Column="2" Text="{Binding SelectedItem.Redes_sociales, ElementName=lstListaArtistas}"/>
+                                        <Label x:Name="lblEstado" Grid.Row="2" Grid.Column="1" FontSize="15" Content="Estado: "/>
+                                        <ComboBox x:Name="cbEstado" Grid.Row="2" Grid.Column="2" Margin="3">
+                                            <ComboBoxItem IsSelected="True">Sin definir</ComboBoxItem>
+                                            <ComboBoxItem>Confirmado</ComboBoxItem>
+                                            <ComboBoxItem>Cancelado</ComboBoxItem>
+                                            <ComboBoxItem>Pop</ComboBoxItem>
+                                        </ComboBox>
                                         <Label Content="Género:" Grid.Row="3" Grid.Column="1"/>
                                         <ComboBox x:Name="cbGenero" Grid.Row="3" Grid.Column="2" Margin="3">
                                             <ComboBoxItem IsSelected="True">Sin definir</ComboBoxItem>
