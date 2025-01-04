@@ -67,12 +67,12 @@
                                 </Border>
                             </GroupBox.Header>
 
-                            <Grid x:Name="pnlPelicula">
+                            <Grid x:Name="pnArtistas">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="50"/>
                                     <RowDefinition Height="200"/>
                                     <RowDefinition Height="150*"/>
-                                    <RowDefinition Height="35"/>
+                                    <RowDefinition Height="200"/>
                                 </Grid.RowDefinitions>
                                 
                                 <Border Grid.Row="0" Background="DarkBlue"
@@ -135,7 +135,7 @@
                                             <ComboBoxItem IsSelected="True">Sin definir</ComboBoxItem>
                                             <ComboBoxItem>Confirmado</ComboBoxItem>
                                             <ComboBoxItem>Cancelado</ComboBoxItem>
-                                            <ComboBoxItem>Pop</ComboBoxItem>
+            
                                         </ComboBox>
                                         <Label Content="Género:" Grid.Row="3" Grid.Column="1"/>
                                         <ComboBox x:Name="cbGenero" Grid.Row="3" Grid.Column="2" Margin="3">
@@ -155,17 +155,15 @@
                                     <UniformGrid x:Name="ugDetalles" Columns="2" Rows="1" >
                                         <Expander Grid.Column="0" IsExpanded="True"
                                             Header="Festivales" ToolTip="Festivales donde actuan los artistas">
-                                            <ListBox x:Name="lbFestivales">
-                                                <ListBoxItem>Actor principal</ListBoxItem>
-                                                <ListBoxItem>Otro actor</ListBoxItem>
-                                                <ListBoxItem>Otro más</ListBoxItem>
+                                            <ListBox x:Name="lbFestivales" ItemsSource="{Binding SelectedItem.Festivales, ElementName=lstListaArtistas}">
+                                                
                                             </ListBox>
                                         </Expander>
 
                                         <Expander Grid.Column="1" IsExpanded="True"
-                                            Header="Argumento"
-                                            ToolTip="Argumento de la película">
-                                            <TextBox x:Name="txtArgumento"
+                                            Header="Descripción"
+                                            ToolTip="Descripción del artista">
+                                            <TextBox x:Name="txtDescripción"
                                                 TextWrapping="Wrap"
                                                 AcceptsReturn="True"
                                                 VerticalScrollBarVisibility="Visible"
@@ -174,6 +172,24 @@
                                             </TextBox>
                                         </Expander>
                                     </UniformGrid>
+                                </GroupBox>
+                                <GroupBox Grid.Row="3" BorderBrush="red" Grid.ColumnSpan="2">
+                                    <GroupBox.Header>
+                                        <Border Background="red" >
+                                            <TextBlock Text="Información del artista" Foreground="White"/>
+                                        </Border>
+                                    </GroupBox.Header>
+
+                                    <Expander Grid.Column="0" IsExpanded="True"
+                                              Header="Información" ToolTip="Información sobre los artistas">
+                                        <TextBox x:Name="txtInfoArtistas"
+                                                 TextWrapping="Wrap"
+                                                 AcceptsReturn="True"
+                                                 VerticalScrollBarVisibility="Visible"
+                                                 Margin="5"
+                                                 Text="{Binding SelectedItem.Integrantes, ElementName=lstListaArtistas}">
+                                        </TextBox>
+                                    </Expander>
                                 </GroupBox>
                             </Grid>
                         </GroupBox>

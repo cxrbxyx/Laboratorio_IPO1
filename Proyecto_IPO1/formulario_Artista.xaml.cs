@@ -45,7 +45,7 @@ namespace Proyecto_IPO1
 
                 foreach (XmlNode node in database.DocumentElement.ChildNodes)
                 {
-                    var artista = new Artista("", "", "", null, "", null,"","","")
+                    var artista = new Artista("", "", "", null, "", null,"","",null)
                     {
                         Nombre = node.Attributes["Nombre"].Value,
                         Integrantes = node.Attributes["Integrantes"].Value,
@@ -55,7 +55,7 @@ namespace Proyecto_IPO1
                         Caratula = new Uri(node.Attributes["Caratula"].Value, UriKind.Relative),
                         Contacto = node.Attributes["Contacto"].Value,
                         Estado = node.Attributes["Estado"].Value,
-                        Festivales = node.Attributes["Festivales"].Value
+                        Festivales = node.Attributes["Festivales"].Value.Split(',').ToList()
                     };
                     listado.Add(artista);
 

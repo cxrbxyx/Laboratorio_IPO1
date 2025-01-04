@@ -19,11 +19,11 @@ namespace Proyecto_IPO1
         public string Contacto { set; get; }    
 
         public string Estado { set; get; }
-        public string Festivales { set; get; }
+        public List<string> Festivales { set; get; }
 
 
         public Artista(string nombre, string integrantes,
-        string genero, Uri redes_sociales, string descripcion , Uri caratula, string contacto, string estado, string festivales)
+        string genero, Uri redes_sociales, string descripcion , Uri caratula, string contacto, string estado, List<string> festivales)
         {
             Nombre = nombre;
             Integrantes = integrantes;
