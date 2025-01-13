@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Proyecto_IPO1"
         mc:Ignorable="d"
-        Title="formulario_Festivales" Height="720" Width="1280">
+        Title="Festivales" Height="720" Width="1280">
     <Grid>
         <TabControl x:Name="tcPestanas">
             <TabItem Header="Lista de festivales">
@@ -20,10 +20,10 @@
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
                                     <Image Width="32" Height="37"
-                                    Source="{Binding Caratula}"/>
+                                            Source="{Binding Caratula}"/>
                                     <TextBlock VerticalAlignment="Center"
-                                    Margin="10,0,0,0"
-                                    Text="{Binding Nombre}"/>
+                                            Margin="10,0,0,0"
+                                            Text="{Binding Nombre}"/>
                                 </StackPanel>
                             </DataTemplate>
                         </ListBox.ItemTemplate>
@@ -57,22 +57,140 @@
                     </ListBox>
 
                     <GridSplitter Grid.Column="1" Width="5"
-                HorizontalAlignment="Stretch" />
-                    <StackPanel x:Name="spDetallesFestiavales" Grid.Column="2" Orientation="Vertical" Background="#FFA5A5A5">
-                        <Label x:Name="lblFestival" FontWeight="Bold" FontSize="20" Content="{Binding ElementName=lstListaFestivales,Path=SelectedItem.Nombre}"/>
-                        <Image x:Name="imgCaratula" Width="100" Height="100" HorizontalAlignment="Left" Source="{Binding SelectedItem.Caratula, ElementName=lstListaFestivales}" />
-                        <Label x:Name="lblDescripcion" FontSize="14" FontWeight="Bold" Content="Descripción"/>
-                        <TextBlock x:Name="txtDescripcion" TextWrapping="Wrap" Text="{Binding SelectedItem.Descripcion, ElementName=lstListaFestivales}"/>
-                        <Label x:Name="lblFechas" FontSize="14" FontWeight="Bold" Content="Fechas"/>
-                        <TextBlock x:Name="txtFechas" TextWrapping="Wrap" Text="{Binding SelectedItem.Fechas, ElementName=lstListaFestivales}"/>
-                        <Label x:Name="lblPrecios" FontSize="14" FontWeight="Bold" Content="Precios"/>
-                        <TextBlock x:Name="txtPrecios" TextWrapping="Wrap" Text="{Binding SelectedItem.Precios, ElementName=lstListaFestivales}"/>
-                        <Label x:Name="lblRedesSociales" FontSize="14" FontWeight="Bold" Content="Redes Sociales"/>
-                        <TextBlock x:Name="txtRedesSociales" TextWrapping="Wrap" Text="{Binding SelectedItem.Redes_sociales, ElementName=lstListaFestivales}" FontStyle="Italic" TextDecorations="Underline" Foreground="#FF0061FF"/>
-                        <Label x:Name="lblEstado" FontSize="14" FontWeight="Bold" Content="Estado"/>
-                        <TextBlock x:Name="txtEstado" TextWrapping="Wrap" Text="{Binding SelectedItem.Estado, ElementName=lstListaFestivales}"/>
-                        <Label x:Name="lblCartelera" FontSize="14" FontWeight="Bold" Content="Cartelera"/>
-                        <Image x:Name="imgCartelera" Width="500" Height="315" HorizontalAlignment="Left" Source="{Binding SelectedItem.Cartelera, ElementName=lstListaFestivales}" />
+                        HorizontalAlignment="Stretch"/>
+                    <StackPanel x:Name="spDetallesFestivales" Grid.Column="2" Orientation="Vertical" Background="#FFA5A5A5" Cursor="">
+                        <GroupBox Grid.Row="1" BorderBrush="Black"
+                            Background="AliceBlue" >
+                            <GroupBox.Header>
+                                <Border Background="Black" TextBlock.FontSize="22" >
+                                    <TextBlock Text="Artista" Foreground ="White"/>
+                                </Border>
+                            </GroupBox.Header>
+
+                            <Grid x:Name="pnFestivales">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="50"/>
+                                    <RowDefinition Height="200"/>
+                                    <RowDefinition Height="150*"/>
+                                    <RowDefinition Height="200"/>
+                                </Grid.RowDefinitions>
+
+                                <Border Grid.Row="0" Background="DarkBlue"
+                                        TextBlock.FontSize="18" Grid.ColumnSpan="2" >
+
+                                    <WrapPanel Orientation="Horizontal">
+                                        <Label Content="Nombre:" Foreground="White"
+                                          FontSize="20"/>
+                                        <TextBox x:Name="txtPelicula" Width="500"
+                                           FontSize="20" Text="{Binding ElementName=lstListaFestivales,Path=SelectedItem.Nombre}"/>
+                                    </WrapPanel>
+                                </Border>
+
+                                <GroupBox  Grid.Row="1" BorderBrush="Blue" 
+                                Grid.ColumnSpan="2" Margin="5,5,250,5">
+
+                                    <GroupBox.Header>
+                                        <Border Background="Blue" >
+                                            <TextBlock Text="Ficha técnica" Foreground="White"/>
+                                        </Border>
+                                    </GroupBox.Header>
+
+                                    <Grid x:Name="pnlFichaTecnica">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="120" />
+                                            <ColumnDefinition Width="110" />
+                                            <ColumnDefinition Width="140" />
+                                            <ColumnDefinition Width="100" />
+
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+                                        <Grid Grid.Column="0" Grid.RowSpan="4">
+                                            <Border BorderBrush="Blue" Background="Transparent"
+                                                BorderThickness="2" Margin="5,2,2,2" >
+                                                <Image x:Name="imgCaratula"
+                                                    Width="100" Height="120"                                         
+                                                    Source="{Binding SelectedItem.Caratula, ElementName=lstListaFestivales}" 
+                                                    Stretch="Fill"/>
+                                            </Border>
+
+                                            <Button x:Name="btnCargarImagen"
+                                                    Content="+" ToolTip="Cambiar imagen"
+                                                    VerticalAlignment="Bottom" HorizontalAlignment="Right"
+                                                    Margin = "5" FontSize="30" FontWeight ="Bold"
+                                                    Background="Transparent" BorderBrush="Transparent"
+                                                    Foreground="Blue"/>
+                                        </Grid>
+
+                                        <Label x:Name="lblArtista" Grid.Row="0" Grid.Column="1" FontWeight="Bold" FontSize="15" Content="Contacto: "/>
+                                        <TextBox x:Name="txtAnio" Grid.Row="0" Grid.Column="2" Text="{Binding SelectedItem.Contacto, ElementName=lstListaFestivales}"/>
+                                        <Label x:Name="lblWEB" Grid.Row="1" Grid.Column="1" FontSize="15" Content="web sitie: "/>
+                                        <TextBox x:Name="txtweb" Grid.Row="1" Grid.Column="2" Text="{Binding SelectedItem.Redes_sociales, ElementName=lstListaFestivales}"/>
+                                        <Label x:Name="lblEstado" Grid.Row="2" Grid.Column="1" FontSize="15" Content="Estado: "/>
+                                        <ComboBox x:Name="cbEstado" Grid.Row="2" Grid.Column="2" Margin="3">
+                                            <ComboBoxItem IsSelected="True">Sin definir</ComboBoxItem>
+                                            <ComboBoxItem>Confirmado</ComboBoxItem>
+                                            <ComboBoxItem>Cancelado</ComboBoxItem>
+
+                                        </ComboBox>
+                                        <Label Content="Género:" Grid.Row="3" Grid.Column="1"/>
+                                        <ComboBox x:Name="cbGenero" Grid.Row="3" Grid.Column="2" Margin="3">
+                                            <ComboBoxItem IsSelected="True">Sin definir</ComboBoxItem>
+                                            <ComboBoxItem>Rock</ComboBoxItem>
+                                            <ComboBoxItem>Urbano</ComboBoxItem>
+                                            <ComboBoxItem>Pop</ComboBoxItem>
+                                        </ComboBox>
+                                    </Grid>
+                                </GroupBox>
+                                <GroupBox Grid.Row="2" BorderBrush="Gray" Grid.ColumnSpan="2">
+                                    <GroupBox.Header>
+                                        <Border Background="Gray" >
+                                            <TextBlock Text="Detalles" Foreground="White"/>
+                                        </Border>
+                                    </GroupBox.Header>
+                                    <UniformGrid x:Name="ugDetalles" Columns="2" Rows="1" >
+                                        <Expander Grid.Column="0" IsExpanded="True"
+                                            Header="Artistas" ToolTip="Artistas que actúan en el festival">
+                                            <ListBox x:Name="lbArtistas" ItemsSource="{Binding SelectedItem.Artistas, ElementName=lstListaFestivales}">
+
+                                            </ListBox>
+                                        </Expander>
+
+                                        <Expander Grid.Column="1" IsExpanded="True"
+                                            Header="Descripción"
+                                            ToolTip="Descripción del artista">
+                                            <TextBox x:Name="txtDescripción"
+                                                TextWrapping="Wrap"
+                                                AcceptsReturn="True"
+                                                VerticalScrollBarVisibility="Visible"
+                                                Text="{Binding SelectedItem.Descripcion, ElementName=lstListaFestivales}" Height="40"/>
+                                        </Expander>
+                                    </UniformGrid>
+                                </GroupBox>
+                                <GroupBox Grid.Row="3" BorderBrush="red" Grid.ColumnSpan="2">
+                                    <GroupBox.Header>
+                                        <Border Background="red" >
+                                            <TextBlock Text="Información del festival" Foreground="White"/>
+                                        </Border>
+                                    </GroupBox.Header>
+
+                                    <Expander Grid.Column="0" IsExpanded="True"
+                                              Header="Información" ToolTip="Información sobre el festival">
+                                        <TextBox x:Name="txtInfoFestival"
+                                                 TextWrapping="Wrap"
+                                                 AcceptsReturn="True"
+                                                 VerticalScrollBarVisibility="Visible"
+                                                 Margin="5"
+                                                 Text="{Binding SelectedItem.Integrantes, ElementName=lstListaFestivales}">
+                                        </TextBox>
+                                    </Expander>
+                                </GroupBox>
+                            </Grid>
+                        </GroupBox>
                     </StackPanel>
                 </Grid>
             </TabItem>
@@ -82,5 +200,7 @@
                 </Grid>
             </TabItem>
         </TabControl>
+
     </Grid>
+
 </Window>
