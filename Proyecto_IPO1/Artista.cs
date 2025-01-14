@@ -7,7 +7,7 @@ using System.Windows;
 
 namespace Proyecto_IPO1
 {
-    class Artista
+    public class Artista
     {
         public string Nombre { set; get; }
         public string Integrantes { set; get; }

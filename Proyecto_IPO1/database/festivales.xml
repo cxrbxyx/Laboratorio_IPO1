@@ -7,7 +7,8 @@
 		Caratula="images/viñarock.png"
 		Estado="planificado"
 		Descripcion="Hay que dejar el camino social alquitranado porque en él se nos quedan pegadas las pezuñas hay que volar libre al sol y al viento repartiendo el amor que tengas dentro"
-		Cartelera= "images/Cartelera_Viñarock.png"/>
+		Cartelera= "images/Cartelera_Viñarock.png"
+		Artistas = "Extremoduro,Marea,Metalica"/>
 	<Festival
 	    Nombre="Coachella"
 	    Fechas="04/12/2025"
@@ -16,7 +17,8 @@
 	    Caratula="images/coachella.png"
 	    Estado="planificado"
 	    Descripcion="El icónico festival de música y arte en el desierto de California que reúne a los artistas más destacados del mundo."
-	    Cartelera="images/Cartelera_Coachella.png"/>
+	    Cartelera="images/Cartelera_Coachella.png"
+		Artistas = "DJ Nano,Bad Bunny,Natos y Waor"/>
 
 	<Festival
         Nombre="Dreambeach"
@@ -26,7 +28,8 @@
         Caratula="images/dreambeach.png"
         Estado="planificado"
         Descripcion="El festival de música electrónica más esperado del verano, situado en las playas de Villaricos, Almería."
-        Cartelera="images/Cartelera_Dreambeach.png"/>
+        Cartelera="images/Cartelera_Dreambeach.png"
+		Artistas = "DJ Nano,Bad Bunny,Natos y Waor"/>
 
 	<Festival
         Nombre="Resurrection Fest"
@@ -36,7 +39,8 @@
         Caratula="images/resurrectionfest.png"
         Estado="planificado"
         Descripcion="La gran cita del hardcore, punk y metal en España, con un cartel que siempre supera las expectativas."
-        Cartelera="images/Cartelera_ResurrectionFest.png"/>
+        Cartelera="images/Cartelera_ResurrectionFest.png"
+		Artistas = "Extremoduro,Marea,Metalica,Platero y Tú,La Raíz"/>
 
 	<Festival
         Nombre="Madrid Salvaje"
@@ -46,6 +50,7 @@
         Caratula="images/madridsalvaje.png"
         Estado="planificado"
         Descripcion="Una experiencia urbana que reúne lo mejor de la música rap, trap y urbana en el corazón de Madrid."
-        Cartelera="images/Cartelera_MadridSalvaje.png"/>
+        Cartelera="images/Cartelera_MadridSalvaje.png"
+		Artistas="Natos y Waor"/>
 	
 </Festivales>

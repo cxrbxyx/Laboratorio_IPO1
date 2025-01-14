@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Proyecto_IPO1" 
+        xmlns:local="clr-namespace:Proyecto_IPO1"
         mc:Ignorable="d"
         Title="Artistas" Height="720" Width="1280">
     <Grid>
@@ -11,9 +11,9 @@
             <TabItem Header="Lista de artistas">
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="217*"/>
+                        <ColumnDefinition Width="25*"/>
                         <ColumnDefinition Width="auto"/>
-                        <ColumnDefinition Width="344*"/>
+                        <ColumnDefinition Width="75*"/>
                     </Grid.ColumnDefinitions>
                     <ListBox x:Name="lstListaArtistas" Grid.Column="0" SelectedIndex="0" Margin="5" Background="#FFC8C8C8">
                         <ListBox.ItemTemplate>
@@ -60,7 +60,7 @@
                         HorizontalAlignment="Stretch"/>
                     <StackPanel x:Name="spDetallesArtistas" Grid.Column="2" Orientation="Vertical" Background="#FFA5A5A5" Cursor="">
                         <GroupBox Grid.Row="1" BorderBrush="Black"
-                            Background="AliceBlue" >
+                            Background="AliceBlue" Height="674" >
                             <GroupBox.Header>
                                 <Border Background="Black" TextBlock.FontSize="22" >
                                     <TextBlock Text="Artista" Foreground ="White"/>
@@ -69,12 +69,12 @@
 
                             <Grid x:Name="pnArtistas">
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="50"/>
-                                    <RowDefinition Height="200"/>
-                                    <RowDefinition Height="150*"/>
-                                    <RowDefinition Height="200"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
                                 </Grid.RowDefinitions>
-                                
+
                                 <Border Grid.Row="0" Background="DarkBlue"
                                         TextBlock.FontSize="18" Grid.ColumnSpan="2" >
 
@@ -87,7 +87,7 @@
                                 </Border>
 
                                 <GroupBox  Grid.Row="1" BorderBrush="Blue" 
-                                Grid.ColumnSpan="2" Margin="5,5,250,5">
+                                Grid.ColumnSpan="2" Margin="5,5,5,5">
 
                                     <GroupBox.Header>
                                         <Border Background="Blue" >
@@ -97,10 +97,10 @@
 
                                     <Grid x:Name="pnlFichaTecnica">
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="120" />
-                                            <ColumnDefinition Width="110" />
-                                            <ColumnDefinition Width="140" />
-                                            <ColumnDefinition Width="100" />
+                                            <ColumnDefinition Width="15*" />
+                                            <ColumnDefinition Width="15*" />
+                                            <ColumnDefinition Width="50*" />
+                                            <ColumnDefinition Width="20*" />
 
                                         </Grid.ColumnDefinitions>
                                         <Grid.RowDefinitions>
@@ -132,11 +132,6 @@
                                                 <Binding Path="Contacto "
                                                     ValidatesOnDataErrors="True"
                                                     UpdateSourceTrigger="PropertyChanged">
-                                                    <Binding.ValidationRules>
-                                                        <local:ReglaRangoLongitudCaracteres
-                                                            MinimoCaracteres="4"
-                                                            MaximoCaracteres="4"/>
-                                                    </Binding.ValidationRules>
                                                 </Binding>
                                             </TextBox.Text>
                                         </TextBox>
@@ -147,7 +142,7 @@
                                             <ComboBoxItem IsSelected="True">Sin definir</ComboBoxItem>
                                             <ComboBoxItem>Confirmado</ComboBoxItem>
                                             <ComboBoxItem>Cancelado</ComboBoxItem>
-            
+
                                         </ComboBox>
                                         <Label Content="Género:" Grid.Row="3" Grid.Column="1"/>
                                         <ComboBox x:Name="cbGenero" Grid.Row="3" Grid.Column="2" Margin="3">
@@ -168,7 +163,7 @@
                                         <Expander Grid.Column="0" IsExpanded="True"
                                             Header="Festivales" ToolTip="Festivales donde actuan los artistas">
                                             <ListBox x:Name="lbFestivales" ItemsSource="{Binding SelectedItem.Festivales, ElementName=lstListaArtistas}">
-                                                
+
                                             </ListBox>
                                         </Expander>
 
@@ -206,11 +201,6 @@
                             </Grid>
                         </GroupBox>
                     </StackPanel>
-                </Grid>
-            </TabItem>
-
-            <TabItem Header="Ejemplo tabla (DataGrid)">
-                <Grid>
                 </Grid>
             </TabItem>
         </TabControl>

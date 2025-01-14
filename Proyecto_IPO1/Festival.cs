@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Proyecto_IPO1
 {
-    internal class Festival
+    public class Festival
     {
 
         public string Nombre { set; get; }

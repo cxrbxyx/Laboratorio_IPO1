@@ -22,13 +22,13 @@ namespace Proyecto_IPO1
     public partial class formulario_Artista : Window
     {
 
-        public formulario_Artista()
+        public formulario_Artista(Festival festival)
         {
             InitializeComponent();
             try
             {
                 List<Artista> lista_artistas = new List<Artista>();
-                lista_artistas = CargarContenidoXML();
+                lista_artistas = CargarContenidoXML(festival);
                 lstListaArtistas.ItemsSource = lista_artistas;
             }
             catch (Exception ex)
@@ -37,31 +37,35 @@ namespace Proyecto_IPO1
             }
         }
 
-        private List<Artista> CargarContenidoXML()
+        private List<Artista> CargarContenidoXML(Festival festival)
         {
             List<Artista> listado = new List<Artista>();
             XmlDocument database = new XmlDocument();
-                var fichero = Application.GetResourceStream(new Uri("database/artistas.xml", UriKind.Relative));
-                database.Load(fichero.Stream);
+            var fichero = Application.GetResourceStream(new Uri("database/artistas.xml", UriKind.Relative));
+            database.Load(fichero.Stream);
 
-                foreach (XmlNode node in database.DocumentElement.ChildNodes)
+            foreach (XmlNode node in database.DocumentElement.ChildNodes)
+            {
+                var artista = new Artista("", "", "", null, "", null, "", "", null)
                 {
-                    var artista = new Artista("", "", "", null, "", null,"","",null)
-                    {
-                        Nombre = node.Attributes["Nombre"].Value,
-                        Integrantes = node.Attributes["Integrantes"].Value,
-                        Genero = node.Attributes["Genero"].Value,
-                        Redes_sociales = new Uri(node.Attributes["Redes_sociales"].Value, UriKind.Absolute),
-                        Descripcion = node.Attributes["Descripcion"].Value,
-                        Caratula = new Uri(node.Attributes["Caratula"].Value, UriKind.Relative),
-                        Contacto = node.Attributes["Contacto"].Value,
-                        Estado = node.Attributes["Estado"].Value,
-                        Festivales = node.Attributes["Festivales"].Value.Split(',').ToList()
-                    };
-                    listado.Add(artista);
+                    Nombre = node.Attributes["Nombre"].Value,
+                    Integrantes = node.Attributes["Integrantes"].Value,
+                    Genero = node.Attributes["Genero"].Value,
+                    Redes_sociales = new Uri(node.Attributes["Redes_sociales"].Value, UriKind.Absolute),
+                    Descripcion = node.Attributes["Descripcion"].Value,
+                    Caratula = new Uri(node.Attributes["Caratula"].Value, UriKind.Relative),
+                    Contacto = node.Attributes["Contacto"].Value,
+                    Estado = node.Attributes["Estado"].Value,
+                    Festivales = new List<string>(),
+                };
 
+                if (festival.Artistas.Any(a => a.Nombre == artista.Nombre))
+                {
+                    artista.Festivales.Add(festival.Nombre);
+                    listado.Add(artista);
                 }
-                return listado;
+            }
+            return listado;
         }
     }
 
