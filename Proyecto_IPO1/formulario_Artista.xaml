@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Proyecto_IPO1"
+        xmlns:local="clr-namespace:Proyecto_IPO1" 
         mc:Ignorable="d"
         Title="Artistas" Height="720" Width="1280">
     <Grid>
@@ -127,7 +127,19 @@
                                         </Grid>
 
                                         <Label x:Name="lblArtista" Grid.Row="0" Grid.Column="1" FontWeight="Bold" FontSize="15" Content="Contacto: "/>
-                                        <TextBox x:Name="txtAnio" Grid.Row="0" Grid.Column="2" Text="{Binding SelectedItem.Contacto, ElementName=lstListaArtistas}"/>
+                                        <TextBox x:Name="txtContacto" Grid.Row="0" Grid.Column="2" TabIndex="2">
+                                            <TextBox.Text>
+                                                <Binding Path="Contacto "
+                                                    ValidatesOnDataErrors="True"
+                                                    UpdateSourceTrigger="PropertyChanged">
+                                                    <Binding.ValidationRules>
+                                                        <local:ReglaRangoLongitudCaracteres
+                                                            MinimoCaracteres="4"
+                                                            MaximoCaracteres="4"/>
+                                                    </Binding.ValidationRules>
+                                                </Binding>
+                                            </TextBox.Text>
+                                        </TextBox>
                                         <Label x:Name="lblWEB" Grid.Row="1" Grid.Column="1" FontSize="15" Content="web sitie: "/>
                                         <TextBox x:Name="txtweb" Grid.Row="1" Grid.Column="2" Text="{Binding SelectedItem.Redes_sociales, ElementName=lstListaArtistas}"/>
                                         <Label x:Name="lblEstado" Grid.Row="2" Grid.Column="1" FontSize="15" Content="Estado: "/>
