@@ -71,8 +71,9 @@
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="auto"/>
                                     <RowDefinition Height="auto"/>
-                                    <RowDefinition Height="auto"/>
-                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="150"/>
+                                    <RowDefinition Height="205"/>
+                                    <RowDefinition Height="50"/>
                                 </Grid.RowDefinitions>
 
                                 <Border Grid.Row="0" Background="DarkBlue"
@@ -81,7 +82,7 @@
                                     <WrapPanel Orientation="Horizontal">
                                         <Label Content="Nombre:" Foreground="White"
                                           FontSize="20"/>
-                                        <TextBox x:Name="txtPelicula" Width="500"
+                                        <TextBox x:Name="txtNombre" Width="500"
                                            FontSize="20" Text="{Binding ElementName=lstListaArtistas,Path=SelectedItem.Nombre}"/>
                                     </WrapPanel>
                                 </Border>
@@ -198,6 +199,14 @@
                                         </TextBox>
                                     </Expander>
                                 </GroupBox>
+                                <Button x:Name="btnGuardar"
+                                        Grid.Row="4"
+                                        Content="Guardar"
+                                        FontSize="16" FontWeight="Bold"
+                                        Width="130"
+                                        ToolTip="Pulsar para guardar"
+                                        HorizontalAlignment="Right"
+                                        Margin="0,20,28,-20" />     
                             </Grid>
                         </GroupBox>
                     </StackPanel>

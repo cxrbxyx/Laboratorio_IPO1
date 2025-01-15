@@ -102,6 +102,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="ReglaRangoLongitudCaracteres.cs" />
+    <Compile Include="Ventana_guardar.xaml.cs">
+      <DependentUpon>Ventana_guardar.xaml</DependentUpon>
+    </Compile>
     <Page Include="formulario_Artista.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -132,6 +135,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Ventana_guardar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">

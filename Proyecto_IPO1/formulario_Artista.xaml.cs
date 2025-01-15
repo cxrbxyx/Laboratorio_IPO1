@@ -21,7 +21,10 @@ namespace Proyecto_IPO1
     /// </summary>
     public partial class formulario_Artista : Window
     {
-
+        private Ventana_guardar ventana;
+        private Artista ArtistaActual;
+        private Ventana_guardar ventanaGuardar;
+        private Artista ArtistaGuardar;
         public formulario_Artista(Festival festival)
         {
             InitializeComponent();
@@ -67,6 +70,22 @@ namespace Proyecto_IPO1
             }
             return listado;
         }
+
+        private void btnGuardar_Click(object sender, RoutedEventArgs e)
+        {
+
+            ArtistaGuardar.Nombre = txtNombre.Text;
+            ArtistaGuardar.Integrantes = txtInfoArtistas.Text;
+            ArtistaGuardar.Genero = cbGenero.Text;
+            ArtistaGuardar.Redes_sociales = new Uri(txtweb.Text, UriKind.Absolute);
+            ArtistaGuardar.Descripcion = txtDescripción.Text;
+            ArtistaGuardar.Contacto = txtContacto.Text;
+            ArtistaGuardar.Estado = cbEstado.Text;
+
+            ventana = new Ventana_guardar(ArtistaGuardar);
+            ventana.Show();
+        }
+
     }
 
 }
