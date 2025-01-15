@@ -86,6 +86,14 @@ namespace Proyecto_IPO1
             ventana.Show();
         }
 
+        private void miSalir_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+        private void miAcercaDe_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Aplicación realizada por ...", "Acerca de");
+        }
     }
 
 }

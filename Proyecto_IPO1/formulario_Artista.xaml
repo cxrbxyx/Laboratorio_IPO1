@@ -14,9 +14,9 @@
         <Menu Grid.Row="0" x:Name="miMenu"
         FontSize="16" FontWeight="Bold">
             <MenuItem Header="Archivo" >
-                <MenuItem x:Name="miGuardar" Header="Guardar">
+                <MenuItem x:Name="miGuardar" Header="Guardar" Click="btnGuardar_Click">
                     <MenuItem.Icon>
-                        <Image Source="Imagenes/guardar.png"/>
+                        <Image Source="Images/guardar.png"/>
                     </MenuItem.Icon>
                 </MenuItem>
                 <Separator/>
