@@ -23,7 +23,10 @@ namespace Proyecto_IPO1
         {
             InitializeComponent();
             String DatosArtistas = "Datos de los artistas a guardar: \n";
-            DatosArtistas += "Nombre: " + artista.Nombre + "Contacto" + artista.Contacto;
+            DatosArtistas += "Nombre: " + artista.Nombre + "Contacto: " + artista.Contacto +
+                "Genero: " + artista.Genero + "Estado: " + artista.Estado;
+
+            txtContenido.Text = DatosArtistas;
         }
 
         private void btnVolver_Click(object sender, RoutedEventArgs e)

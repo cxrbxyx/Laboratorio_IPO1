@@ -7,15 +7,35 @@
         mc:Ignorable="d"
         Title="Artistas" Height="720" Width="1280">
     <Grid>
-        <TabControl x:Name="tcPestanas">
-            <TabItem Header="Lista de artistas">
-                <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Menu Grid.Row="0" x:Name="miMenu"
+        FontSize="16" FontWeight="Bold">
+            <MenuItem Header="Archivo" >
+                <MenuItem x:Name="miGuardar" Header="Guardar">
+                    <MenuItem.Icon>
+                        <Image Source="Imagenes/guardar.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <Separator/>
+                <MenuItem x:Name="miSalir" Header="Salir"/>
+            </MenuItem>
+            <MenuItem Header="Ayuda" >
+                <MenuItem x:Name="miAcercaDe" Header="Acerca de..." />
+            </MenuItem>
+        </Menu>
+        
+            
+            
+                <Grid Grid.Row="1">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="25*"/>
                         <ColumnDefinition Width="auto"/>
                         <ColumnDefinition Width="75*"/>
                     </Grid.ColumnDefinitions>
-                    <ListBox x:Name="lstListaArtistas" Grid.Column="0" SelectedIndex="0" Margin="5" Background="#FFC8C8C8">
+                <ListBox x:Name="lstListaArtistas" Grid.Column="0"  SelectedIndex="0" Margin="5" Background="#FFC8C8C8">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
@@ -58,7 +78,7 @@
 
                     <GridSplitter Grid.Column="1" Width="5"
                         HorizontalAlignment="Stretch"/>
-                    <StackPanel x:Name="spDetallesArtistas" Grid.Column="2" Orientation="Vertical" Background="#FFA5A5A5" Cursor="">
+            <StackPanel x:Name="spDetallesArtistas" Grid.Column="2" Orientation="Vertical" Background="#FFA5A5A5" Cursor="">
                         <GroupBox Grid.Row="1" BorderBrush="Black"
                             Background="AliceBlue" Height="674" >
                             <GroupBox.Header>
@@ -210,10 +230,11 @@
                             </Grid>
                         </GroupBox>
                     </StackPanel>
+                    
                 </Grid>
-            </TabItem>
-        </TabControl>
-
+           
+   
     </Grid>
+    
 
 </Window>
