@@ -22,6 +22,7 @@ namespace Proyecto_IPO1
     /// </summary>
     public partial class formulario_Artista : Window
     {
+        private List<Artista> lista_artistas;
         private Ventana_guardar ventana;
         private Artista ArtistaActual;
         private Ventana_guardar ventanaGuardar;
@@ -31,7 +32,7 @@ namespace Proyecto_IPO1
             InitializeComponent();
             try
             {
-                List<Artista> lista_artistas = new List<Artista>();
+                
                 lista_artistas = CargarContenidoXML(festival);
                 lstListaArtistas.ItemsSource = lista_artistas;
             }
@@ -105,12 +106,36 @@ namespace Proyecto_IPO1
         }
         private void miAcercaDe_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Aplicación realizada por ...", "Acerca de");
+            MessageBox.Show("Aplicación realizada por Javier Garzás y Pablo Carbayo", "Acerca de");
         }
 
         private void miEliminarItemLB_Click(object sender, RoutedEventArgs e)
         {
-            lstListaArtistas.Items.Remove(lstListaArtistas.SelectedItem);
+            var artistaSeleccionado = lstListaArtistas.SelectedItem as Artista;
+            if (artistaSeleccionado != null)
+            {
+                lista_artistas.Remove(artistaSeleccionado);
+                lstListaArtistas.ItemsSource = null;
+                lstListaArtistas.ItemsSource = lista_artistas;
+            }
+        }
+
+        private void miAniadirItemLB_Click(object sender, RoutedEventArgs e)
+        {
+            if (lbFestivales.ItemsSource is List<Festival> festivales)
+            {
+                festivales.Clear();
+            }
+
+            txtNombre.Text = "";
+            txtContacto.Text = "";
+            txtweb.Text = "";
+            txtDescripción.Text = "";
+
+            var artista = new Artista("", null, null, null, null, null, "", null, null);
+            lista_artistas.Add(artista);
+            lstListaArtistas.ItemsSource = null;
+            lstListaArtistas.ItemsSource = lista_artistas;
         }
 
         private void btnCargarImagen_Click(object sender, RoutedEventArgs e)
@@ -129,6 +154,11 @@ namespace Proyecto_IPO1
                     MessageBox.Show("Error al cargar la imagen " + ex.Message);
                 }
             }
+        }
+        private void btnUsuario_Click(object sender, RoutedEventArgs e)
+        {
+            var ventanaUsuario = new Ventana_Usuario();
+            ventanaUsuario.Show();
         }
     }
 

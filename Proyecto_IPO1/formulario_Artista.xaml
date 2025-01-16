@@ -26,7 +26,7 @@
                 <MenuItem x:Name="miSalir" Header="Salir" Click="miSalir_Click"/>
             </MenuItem>
             <MenuItem Header="Ayuda" >
-                <MenuItem x:Name="miAcercaDe" Header="Acerca de..." />
+                <MenuItem x:Name="miAcercaDe" Header="Acerca de..." Click="miAcercaDe_Click"/>
             </MenuItem>
         </Menu>
 
@@ -96,6 +96,13 @@
                             <WrapPanel Orientation="Horizontal">
                                 <Label Content="Nombre:" Foreground="Black" FontSize="20"/>
                                 <TextBox x:Name="txtNombre" Width="500" FontSize="20" Text="{Binding ElementName=lstListaArtistas,Path=SelectedItem.Nombre}" Background="#E9C46A" BorderBrush="Transparent"/>
+                                <Button x:Name="btnUsuario"
+                                    Width="35" Height="35"                                         
+                                       Margin="300,0,0,0" Click="btnUsuario_Click">
+                                    <Button.Background>
+                                        <ImageBrush ImageSource="/default_avatar.jpg" Stretch="UniformToFill"/>
+                                    </Button.Background>
+                                </Button>
                             </WrapPanel>
                         </Border>
 

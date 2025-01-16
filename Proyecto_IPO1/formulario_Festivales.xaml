@@ -8,7 +8,8 @@
         Title="FestiGest" Height="720" Width="1280"
         ResizeMode="NoResize"
         WindowStyle="SingleBorderWindow"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen"
+        Icon="/images/logo_festigest.png">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="25"/>
@@ -26,7 +27,7 @@
                 <MenuItem x:Name="miSalir" Header="Salir" Click="miSalir_Click"/>
             </MenuItem>
             <MenuItem Header="Ayuda" >
-                <MenuItem x:Name="miAcercaDe" Header="Acerca de..." />
+                <MenuItem x:Name="miAcercaDe" Header="Acerca de..." Click="miAcercaDe_Click" />
             </MenuItem>
         </Menu>
 
@@ -154,7 +155,7 @@
                                                     VerticalAlignment="Bottom" HorizontalAlignment="Right"
                                                     Margin = "5" FontSize="30" FontWeight ="Bold"
                                                     Background="Transparent" BorderBrush="Transparent"
-                                                    Foreground="#36BA98"/>
+                                                    Foreground="#36BA98" Click="btnCargarImagen_Click"/>
                                 </Grid>
 
                                 <Label x:Name="lblFestival" Grid.Row="0" Grid.Column="1" FontWeight="Bold" FontSize="15" Content="Contacto: "/>
@@ -214,14 +215,16 @@
                                 </Border>
                             </GroupBox.Header>
                             <UniformGrid x:Name="ugInformacion" Columns="2" Rows="1">
-                                <Expander Grid.Column="0" IsExpanded="True" Header="Precios" ToolTip="Información sobre el festival">
+                                <Expander Grid.Column="0" IsExpanded="True" Header="Precios" ToolTip="Precios de los abonos del festival">
                                     <ListBox x:Name="lbPrecios" Margin="5" 
                                               Background="#E9C46A" BorderBrush="Transparent" RenderTransformOrigin="0.139,0.488" ItemsSource="{Binding SelectedItem.Precios, ElementName=lstListaFestivales}" >
                                     </ListBox>
                                 </Expander>
-                                <Calendar x:Name="calFechas" SelectedDatesChanged="calFechas_SelectedDatesChanged" SelectionMode="MultipleRange">
-                                    
-                                </Calendar>
+                                <Expander Grid.Column="1" IsExpanded="True" Header="Fechas" ToolTip="Fechas del festival">
+                                    <Calendar x:Name="calFechas" SelectedDatesChanged="calFechas_SelectedDatesChanged" SelectionMode="MultipleRange">
+
+                                    </Calendar>
+                                </Expander>
 
 
                             </UniformGrid>

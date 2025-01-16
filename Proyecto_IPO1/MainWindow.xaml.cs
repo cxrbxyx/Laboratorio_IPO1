@@ -67,7 +67,8 @@ namespace Proyecto_IPO1
 
                     formulario_Festivales formulario_festival = new formulario_Festivales();
                     formulario_festival.Show();
-                   
+                    Close();
+
 
                 }
                 else

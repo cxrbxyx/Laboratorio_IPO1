@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 using System.Globalization;
@@ -169,11 +170,13 @@ namespace Proyecto_IPO1
             if (lstListaFestivales.SelectedItem is Festival festivalSeleccionado)
             {
                 calFechas.SelectedDates.Clear();
-                foreach (var fecha in festivalSeleccionado.Fechas)
-                {
-                    if (DateTime.TryParseExact(fecha, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime date))
+                if(festivalSeleccionado.Fechas != null) { 
+                    foreach (var fecha in festivalSeleccionado.Fechas)
                     {
-                        calFechas.SelectedDates.Add(date);
+                        if (DateTime.TryParseExact(fecha, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime date))
+                        {
+                            calFechas.SelectedDates.Add(date);
+                        }
                     }
                 }
             }
@@ -183,6 +186,29 @@ namespace Proyecto_IPO1
         {
             var ventanaUsuario = new Ventana_Usuario();
             ventanaUsuario.Show();
+        }
+
+        private void miAcercaDe_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Aplicación realizada por Javier Garzás y Pablo Carbayo", "Acerca de");
+        }
+
+        private void btnCargarImagen_Click(object sender, RoutedEventArgs e)
+        {
+            var abrirDialog = new OpenFileDialog();
+            abrirDialog.Filter = "Images|*.jpg;*.gif;*.bmp;*.png";
+            if (abrirDialog.ShowDialog() == true)
+            {
+                try
+                {
+                    var bitmap = new BitmapImage(new Uri(abrirDialog.FileName, UriKind.Absolute));
+                    imgCaratula.Source = bitmap;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al cargar la imagen " + ex.Message);
+                }
+            }
         }
     }
 }
