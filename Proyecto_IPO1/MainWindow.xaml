@@ -11,7 +11,8 @@
         HorizontalContentAlignment="Stretch" 
         VerticalContentAlignment="Stretch" 
         ResizeMode="NoResize"
-        WindowStyle="SingleBorderWindow">
+        WindowStyle="SingleBorderWindow"
+        Icon="images/default_avatar.jpg">
 
     <Grid x:Name="pnlDisenoPrincipal">
         <Grid.RowDefinitions>
