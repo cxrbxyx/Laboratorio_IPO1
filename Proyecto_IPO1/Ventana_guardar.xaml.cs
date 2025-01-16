@@ -23,8 +23,8 @@ namespace Proyecto_IPO1
         {
             InitializeComponent();
             String DatosArtistas = "Datos de los artistas a guardar: \n";
-            DatosArtistas += "Nombre: " + artista.Nombre + "Contacto: " + artista.Contacto +
-                "Genero: " + artista.Genero + "Estado: " + artista.Estado;
+            DatosArtistas += "Nombre: " + artista.Nombre + "\nContacto: " + artista.Contacto +
+                 "\nGenero: " + artista.Genero + "\nEstado: " + artista.Estado;
 
             txtContenido.Text = DatosArtistas;
         }
@@ -32,6 +32,7 @@ namespace Proyecto_IPO1
         private void btnVolver_Click(object sender, RoutedEventArgs e)
         {
             this.Visibility = Visibility.Hidden;
+            this.Close();
         }
     }
 }

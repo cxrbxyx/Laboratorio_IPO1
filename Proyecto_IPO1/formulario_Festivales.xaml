@@ -228,12 +228,17 @@
                         </GroupBox>
                         <Button x:Name="btnGuardar"
                                         Grid.Row="4"
-                                        Content="Guardar"
-                                        FontSize="16" FontWeight="Bold"
                                         Width="130"
                                         ToolTip="Pulsar para guardar"
                                         HorizontalAlignment="Right"
-                                        Margin="0,20,28,-20" Background="#E9C46A" Click="btnGuardar_Click"/>
+                                        Margin="0,20,28,-20" Background="#E9C46A" Click="btnGuardar_Click">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="Images/guardar.png" Width="32" Height="32" Margin="0,0,5,0"/>
+                                <TextBlock Text="Guardar"
+                                           FontSize="16" FontWeight="Bold" VerticalAlignment="Center"/>
+                            </StackPanel>
+
+                        </Button>
                     </Grid>
                 </GroupBox>
             </StackPanel>

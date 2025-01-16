@@ -124,7 +124,8 @@
                                         <Image x:Name="imgCaratula" Width="100" Height="120" Source="{Binding SelectedItem.Caratula, ElementName=lstListaArtistas}" Stretch="Fill"/>
                                     </Border>
 
-                                    <Button x:Name="btnCargarImagen" Content="+" ToolTip="Cambiar imagen" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="5" FontSize="30" FontWeight="Bold" Background="Transparent" BorderBrush="Transparent" Foreground="#36BA98"/>
+                                    <Button x:Name="btnCargarImagen" Click="btnCargarImagen_Click"
+                                            Content="+" ToolTip="Cambiar imagen" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="5" FontSize="30" FontWeight="Bold" Background="Transparent" BorderBrush="Transparent" Foreground="#36BA98"/>
                                 </Grid>
 
                                 <Label x:Name="lblArtista" Grid.Row="0" Grid.Column="1" FontWeight="Bold" FontSize="15" Content="Contacto:"/>
@@ -174,7 +175,14 @@
                                 <TextBox x:Name="txtInfoArtista" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" Margin="5" Text="{Binding SelectedItem.Integrantes, ElementName=lstListaArtistas}" Background="#E9C46A" BorderBrush="Transparent"/>
                             </Expander>
                         </GroupBox>
-                        <Button x:Name="btnGuardar" Grid.Row="4" Content="Guardar" FontSize="16" FontWeight="Bold" Width="130" ToolTip="Pulsar para guardar" HorizontalAlignment="Right" Margin="0,20,28,-20" Background="#E9C46A"/>
+                        <Button x:Name="btnGuardar" Grid.Row="4" Width="130" ToolTip="Pulsar para guardar" 
+                                HorizontalAlignment="Right" Margin="0,20,28,-20" Background="#E9C46A" Click="btnGuardar_Click">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="Images/guardar.png" Width="32" Height="32" Margin="0,0,5,0"/>
+                                <TextBlock Text="Guardar"
+                                FontSize="16" FontWeight="Bold" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Button>
                     </Grid>
                 </GroupBox>
             </StackPanel>

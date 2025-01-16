@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -73,14 +74,26 @@ namespace Proyecto_IPO1
 
         private void btnGuardar_Click(object sender, RoutedEventArgs e)
         {
+            // Crear lista para almacenar los festivales
+            List<string> festivales = new List<string>();
 
-            ArtistaGuardar.Nombre = txtNombre.Text;
-            ArtistaGuardar.Integrantes = txtInfoArtista.Text;
-            ArtistaGuardar.Genero = cbGenero.Text;
-            ArtistaGuardar.Redes_sociales = new Uri(txtweb.Text, UriKind.Absolute);
-            ArtistaGuardar.Descripcion = txtDescripción.Text;
-            ArtistaGuardar.Contacto = txtContacto.Text;
-            ArtistaGuardar.Estado = cbEstado.Text;
+            // Recorrer los elementos del ListBox y agregarlos a la lista
+            foreach (var item in lbFestivales.Items)
+            {
+                festivales.Add(item.ToString());
+            }
+            var ArtistaGuardar = new Artista("", "", "", null, "", null, "", "", null)
+            {
+                Nombre = txtNombre.Text,
+                Integrantes = txtInfoArtista.Text,
+                Genero = cbGenero.Text,
+                Redes_sociales = new Uri(txtweb.Text, UriKind.Absolute),
+                Descripcion = txtDescripción.Text,
+                Contacto = txtContacto.Text,
+                Estado = cbEstado.Text,
+                Festivales = festivales,
+                Caratula = new Uri(imgCaratula.Source.ToString()),
+            };
 
             ventana = new Ventana_guardar(ArtistaGuardar);
             ventana.Show();
@@ -98,6 +111,24 @@ namespace Proyecto_IPO1
         private void miEliminarItemLB_Click(object sender, RoutedEventArgs e)
         {
             lstListaArtistas.Items.Remove(lstListaArtistas.SelectedItem);
+        }
+
+        private void btnCargarImagen_Click(object sender, RoutedEventArgs e)
+        {
+            var abrirDialog = new OpenFileDialog();
+            abrirDialog.Filter = "Images|*.jpg;*.gif;*.bmp;*.png";
+            if (abrirDialog.ShowDialog() == true)
+            {
+                try
+                {
+                    var bitmap = new BitmapImage(new Uri(abrirDialog.FileName, UriKind.Absolute));
+                    imgCaratula.Source = bitmap;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error al cargar la imagen " + ex.Message);
+                }
+            }
         }
     }
 
