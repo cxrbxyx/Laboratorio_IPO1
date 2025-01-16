@@ -6,11 +6,12 @@
         xmlns:local="clr-namespace:Eventos"
         mc:Ignorable="d"
         Title="Login" 
-        Height="360" Width="640" 
+        Height="500" Width="800" 
         WindowStartupLocation="CenterScreen" 
         HorizontalContentAlignment="Stretch" 
         VerticalContentAlignment="Stretch" 
-        MinHeight="450" MinWidth="700"  >
+        ResizeMode="NoResize"
+        WindowStyle="SingleBorderWindow">
 
     <Grid x:Name="pnlDisenoPrincipal">
         <Grid.RowDefinitions>

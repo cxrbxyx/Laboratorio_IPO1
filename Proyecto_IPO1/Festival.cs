@@ -20,6 +20,8 @@ namespace Proyecto_IPO1
         public Uri Cartelera { set; get; }
         public string Descripcion { set; get; }
 
+        public string Contacto { set; get; }
+
         public Festival(string nombre, List<String> fechas, List<Artista> artistas, Uri redes_sociales, List<string> precios, Uri caratula, string estado, Uri cartelera, string descripcion)
         {
             Nombre = nombre;

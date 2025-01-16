@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -21,12 +22,13 @@ namespace Proyecto_IPO1
     /// </summary>
     public partial class formulario_Festivales : Window
     {
+        private List<Festival> Lista_festivales;
         public formulario_Festivales()
         {
             InitializeComponent();
             try
             {
-                List<Festival> Lista_festivales = new List<Festival>();
+
                 Lista_festivales = CargarContenidoXMLFestivales();
                 lstListaFestivales.ItemsSource = Lista_festivales;
             }
@@ -45,18 +47,21 @@ namespace Proyecto_IPO1
 
             foreach (XmlNode node in database.DocumentElement.ChildNodes)
             {
-                var festival = new Festival("",null,null,null,null,null,"",null,null)
+                var festival = new Festival("", null, null, null, null, null, "", null, null)
                 {
                     Nombre = node.Attributes["Nombre"].Value,
                     Redes_sociales = new Uri(node.Attributes["Redes_sociales"].Value, UriKind.Absolute),
-                    Fechas = node.Attributes["Fechas"].Value.Split(';').ToList(),
-                    Artistas = node.Attributes["Artistas"].Value.Split(',').Select(a=> new Artista(a,null,null,null,null,null,null,null,null)).ToList(),
+                    Fechas = node.Attributes["Fechas"].Value.Split(',').ToList(),
+                    Artistas = node.Attributes["Artistas"].Value.Split(',').Select(a => new Artista(a, null, null, null, null, null, null, null, null)).ToList(),
                     Precios = node.Attributes["Precios"].Value.Split(',').ToList(),
                     Caratula = new Uri(node.Attributes["Caratula"].Value, UriKind.Relative),
                     Estado = node.Attributes["Estado"].Value,
                     Descripcion = node.Attributes["Descripcion"].Value,
                     Cartelera = new Uri(node.Attributes["Cartelera"].Value, UriKind.Relative),
+
                 };
+                string nombreFestival = festival.Nombre.Replace(" ", "_");
+                festival.Contacto = nombreFestival.ToLower() + "@festigest.com";
                 listado.Add(festival);
 
             }
@@ -85,5 +90,99 @@ namespace Proyecto_IPO1
             formularioArtistas.Show();
         }
 
+        private void miSalir_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
+        private void miEliminarItemLB_Click(object sender, RoutedEventArgs e)
+        {
+            var festivalSeleccionado = lstListaFestivales.SelectedItem as Festival;
+            if (festivalSeleccionado != null)
+            {
+                Lista_festivales.Remove(festivalSeleccionado);
+                lstListaFestivales.ItemsSource = null;
+                lstListaFestivales.ItemsSource = Lista_festivales;
+            }
+        }
+
+        private void miAniadirItemLB_Click(object sender, RoutedEventArgs e)
+        {
+            txtNombre.Text = "";
+            txtContacto.Text = "";
+            txtweb.Text = "";
+
+            // Limpia la colección de artistas en lugar de llamar a lbArtistas.Items.Clear()
+            if (lbArtistas.ItemsSource is List<Artista> artistas)
+            {
+                artistas.Clear();
+            }
+
+            txtDescripcion.Text = "";
+            if(lbPrecios.ItemsSource is List<string> precios)
+            {
+                precios.Clear();
+            }
+
+            var festival = new Festival("", null, null, null, null, null, "", null, null);
+            Lista_festivales.Add(festival);
+            lstListaFestivales.ItemsSource = null;
+            lstListaFestivales.ItemsSource = Lista_festivales;
+        }
+
+        private void btnGuardar_Click(object sender, RoutedEventArgs e)
+        {
+            if (lstListaFestivales.SelectedItem is Festival festivalSeleccionado)
+            {
+                if (string.IsNullOrWhiteSpace(txtNombre.Text))
+                {
+                    MessageBox.Show("El campo Nombre no puede estar vacío.", "Advertencia", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
+
+                festivalSeleccionado.Nombre = txtNombre.Text;
+                festivalSeleccionado.Contacto = txtNombre.Text.ToLower().Replace(" ","_")+"@festigest.com";
+                festivalSeleccionado.Redes_sociales = string.IsNullOrWhiteSpace(txtweb.Text) ? null : new Uri(txtweb.Text, UriKind.Absolute);
+                festivalSeleccionado.Descripcion = txtDescripcion.Text;
+                festivalSeleccionado.Estado = "";
+
+                // Actualiza la lista de festivales para reflejar los cambios en la UI
+                lstListaFestivales.ItemsSource = null;
+                lstListaFestivales.ItemsSource = Lista_festivales;
+            }
+            else
+            {
+                MessageBox.Show("Por favor, seleccione un festival de la lista para guardar los cambios.", "Advertencia", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+        }
+
+        private void calFechas_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (lstListaFestivales.SelectedItem is Festival festivalSeleccionado)
+            {
+                festivalSeleccionado.Fechas = calFechas.SelectedDates.Select(d => d.ToString("dd/MM/yyyy")).ToList();
+            }
+        }
+
+        private void lstListaFestivales_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (lstListaFestivales.SelectedItem is Festival festivalSeleccionado)
+            {
+                calFechas.SelectedDates.Clear();
+                foreach (var fecha in festivalSeleccionado.Fechas)
+                {
+                    if (DateTime.TryParseExact(fecha, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime date))
+                    {
+                        calFechas.SelectedDates.Add(date);
+                    }
+                }
+            }
+        }
+
+        private void btnUsuario_Click(object sender, RoutedEventArgs e)
+        {
+            var ventanaUsuario = new Ventana_Usuario();
+            ventanaUsuario.Show();
+        }
     }
 }

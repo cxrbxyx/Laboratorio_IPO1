@@ -102,8 +102,14 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="ReglaRangoLongitudCaracteres.cs" />
+    <Compile Include="Ventana_Confirmacion_Cerrar_Sesion.xaml.cs">
+      <DependentUpon>Ventana_Confirmacion_Cerrar_Sesion.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Ventana_guardar.xaml.cs">
       <DependentUpon>Ventana_guardar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ventana_Usuario.xaml.cs">
+      <DependentUpon>Ventana_Usuario.xaml</DependentUpon>
     </Compile>
     <Page Include="formulario_Artista.xaml">
       <SubType>Designer</SubType>
@@ -135,7 +141,15 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Ventana_Confirmacion_Cerrar_Sesion.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Ventana_guardar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ventana_Usuario.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -257,6 +271,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="images\guardar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="default_avatar.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

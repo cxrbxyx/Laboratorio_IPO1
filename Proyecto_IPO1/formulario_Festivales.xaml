@@ -5,200 +5,241 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Proyecto_IPO1"
         mc:Ignorable="d"
-        Title="Festivales" Height="720" Width="1280">
+        Title="FestiGest" Height="720" Width="1280"
+        ResizeMode="NoResize"
+        WindowStyle="SingleBorderWindow"
+        WindowStartupLocation="CenterScreen">
     <Grid>
-        <TabControl x:Name="tcPestanas">
-            <TabItem Header="Lista de festivales">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="25*"/>
-                        <ColumnDefinition Width="auto"/>
-                        <ColumnDefinition Width="75*"/>
-                    </Grid.ColumnDefinitions>
-                    <ListBox x:Name="lstListaFestivales" Grid.Column="0" SelectedIndex="0" Margin="5" Background="#FFC8C8C8">
-                        <ListBox.ItemTemplate>
-                            <DataTemplate>
-                                <StackPanel Orientation="Horizontal">
-                                    <Image Width="32" Height="37"
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Menu Grid.Row="0" x:Name="miMenu"
+        FontSize="16" FontWeight="Bold">
+            <MenuItem Header="Archivo" >
+                <MenuItem x:Name="miGuardar" Header="Guardar">
+                    <MenuItem.Icon>
+                        <Image Source="Images/guardar.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <Separator/>
+                <MenuItem x:Name="miSalir" Header="Salir" Click="miSalir_Click"/>
+            </MenuItem>
+            <MenuItem Header="Ayuda" >
+                <MenuItem x:Name="miAcercaDe" Header="Acerca de..." />
+            </MenuItem>
+        </Menu>
+
+
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="25*"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="75*"/>
+            </Grid.ColumnDefinitions>
+            <ListBox x:Name="lstListaFestivales" Grid.Column="0"  SelectedIndex="0" Margin="5" Background="#36BA98" SelectionChanged="lstListaFestivales_SelectionChanged">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Width="32" Height="37"
                                             Source="{Binding Caratula}"/>
-                                    <TextBlock VerticalAlignment="Center"
+                            <TextBlock VerticalAlignment="Center"
                                             Margin="10,0,0,0"
                                             Text="{Binding Nombre}"/>
-                                </StackPanel>
-                            </DataTemplate>
-                        </ListBox.ItemTemplate>
-                        <ListBox.ItemContainerStyle>
-                            <Style TargetType="ListBoxItem">
-                                <Setter Property="Margin" Value="2"/>
-                                <Style.Triggers>
-                                    <Trigger Property="IsSelected" Value="True">
-                                        <Setter Property="Foreground" Value="Blue"/>
-                                        <Setter Property="FontWeight" Value="Bold"/>
-                                        <Setter Property="BorderBrush" Value="Blue"/>
-                                        <Setter Property="BorderThickness" Value="3"/>
-                                    </Trigger>
-                                </Style.Triggers>
-                            </Style>
-                        </ListBox.ItemContainerStyle>
-                        <ListBox.ContextMenu>
-                            <ContextMenu>
-                                <MenuItem x:Name="miAniadirItemLB" Header="Añadir ítem" >
-                                    <MenuItem.Icon>
-                                        <Image Source="images/add_c.png"/>
-                                    </MenuItem.Icon>
-                                </MenuItem>
-                                <MenuItem x:Name="miEliminarItemLB" Header="Eliminar ítem">
-                                    <MenuItem.Icon>
-                                        <Image Source="images/remove_c.png"/>
-                                    </MenuItem.Icon>
-                                </MenuItem>
-                            </ContextMenu>
-                        </ListBox.ContextMenu>
-                    </ListBox>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+                <ListBox.ItemContainerStyle>
+                    <Style TargetType="ListBoxItem">
+                        <Setter Property="Margin" Value="2"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Foreground" Value="Blue"/>
+                                <Setter Property="FontWeight" Value="Bold"/>
+                                <Setter Property="BorderBrush" Value="Blue"/>
+                                <Setter Property="BorderThickness" Value="3"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </ListBox.ItemContainerStyle>
+                <ListBox.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem x:Name="miAniadirItemLB" Header="Añadir ítem" Click="miAniadirItemLB_Click">
+                            <MenuItem.Icon>
+                                <Image Source="images/add_c.png"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem x:Name="miEliminarItemLB" Header="Eliminar ítem" Click="miEliminarItemLB_Click">
+                            <MenuItem.Icon>
+                                <Image Source="images/remove_c.png"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                    </ContextMenu>
+                </ListBox.ContextMenu>
+            </ListBox>
 
-                    <GridSplitter Grid.Column="1" Width="5"
+            <GridSplitter Grid.Column="1" Width="5"
                         HorizontalAlignment="Stretch"/>
-                    <StackPanel x:Name="spDetallesFestivales" Grid.Column="2" Orientation="Vertical" Background="#FFA5A5A5" Cursor="">
-                        <GroupBox Grid.Row="1" BorderBrush="Black"
-                            Background="AliceBlue" Height="670" >
+            <StackPanel x:Name="spDetallesFestivales" Grid.Column="2" Orientation="Vertical" Background="#E76F51" Cursor="">
+                <GroupBox Grid.Row="1" BorderBrush="#E9C46A"
+                            Background="#E76F51" Height="674" >
+                    <GroupBox.Header>
+                        <Border Background="#E76F51" TextBlock.FontSize="22" >
+                            <TextBlock Text="FESTIVAL" Foreground ="Black"/>
+                        </Border>
+                    </GroupBox.Header>
+
+                    <Grid x:Name="pnFestivales">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="150"/>
+                            <RowDefinition Height="205"/>
+                            <RowDefinition Height="50"/>
+                        </Grid.RowDefinitions>
+
+                        <Border Grid.Row="0" Background="#E76F51"
+                                        TextBlock.FontSize="18" Grid.ColumnSpan="2" >
+
+                            <WrapPanel Orientation="Horizontal">
+                                <Label Content="Nombre:" Foreground="Black"
+                                          FontSize="20"/>
+                                <TextBox x:Name="txtNombre" Width="500"
+                                           FontSize="20" Text="{Binding ElementName=lstListaFestivales,Path=SelectedItem.Nombre}" Background="#E9C46A" BorderBrush="Transparent"/>
+                                <Button x:Name="btnUsuario"
+                                    Width="35" Height="35"                                         
+                                       Margin="300,0,0,0" Click="btnUsuario_Click">
+                                    <Button.Background>
+                                        <ImageBrush ImageSource="/default_avatar.jpg" Stretch="UniformToFill"/>
+                                    </Button.Background>
+                                </Button>
+                            </WrapPanel>
+                        </Border>
+
+                        <GroupBox  Grid.Row="1" BorderBrush="#E9C46A" 
+                                Grid.ColumnSpan="2" Margin="5,5,5,5">
+
                             <GroupBox.Header>
-                                <Border Background="Black" TextBlock.FontSize="22" >
-                                    <TextBlock Text="Artista" Foreground ="White"/>
+                                <Border Background="#E76F51" >
+                                    <TextBlock Text="Ficha técnica" Foreground="Black"/>
                                 </Border>
                             </GroupBox.Header>
 
-                            <Grid x:Name="pnFestivales">
+                            <Grid x:Name="pnlFichaTecnica">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="15*" />
+                                    <ColumnDefinition Width="15*" />
+                                    <ColumnDefinition Width="50*" />
+                                    <ColumnDefinition Width="20*" />
+
+                                </Grid.ColumnDefinitions>
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="auto"/>
-                                    <RowDefinition Height="auto"/>
-                                    <RowDefinition Height="auto"/>
-                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
                                 </Grid.RowDefinitions>
-
-                                <Border Grid.Row="0" Background="DarkBlue"
-                                        TextBlock.FontSize="18" Grid.ColumnSpan="2" >
-
-                                    <WrapPanel Orientation="Horizontal">
-                                        <Label Content="Nombre:" Foreground="White"
-                                          FontSize="20"/>
-                                        <TextBox x:Name="txtPelicula" Width="500"
-                                           FontSize="20" Text="{Binding ElementName=lstListaFestivales,Path=SelectedItem.Nombre}"/>
-                                    </WrapPanel>
-                                </Border>
-
-                                <GroupBox  Grid.Row="1" BorderBrush="Blue" 
-                                Grid.ColumnSpan="2" Margin="5,5,5,5">
-
-                                    <GroupBox.Header>
-                                        <Border Background="Blue" >
-                                            <TextBlock Text="Ficha técnica" Foreground="White"/>
-                                        </Border>
-                                    </GroupBox.Header>
-
-                                    <Grid x:Name="pnlFichaTecnica">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="15*" />
-                                            <ColumnDefinition Width="15*" />
-                                            <ColumnDefinition Width="50*" />
-                                            <ColumnDefinition Width="20*" />
-
-                                        </Grid.ColumnDefinitions>
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="Auto" />
-                                            <RowDefinition Height="Auto" />
-                                            <RowDefinition Height="Auto" />
-                                            <RowDefinition Height="Auto" />
-                                        </Grid.RowDefinitions>
-                                        <Grid Grid.Column="0" Grid.RowSpan="4">
-                                            <Border BorderBrush="Blue" Background="Transparent"
+                                <Grid Grid.Column="0" Grid.RowSpan="4">
+                                    <Border BorderBrush="#36BA98" Background="Transparent"
                                                 BorderThickness="2" Margin="5,2,2,2" >
-                                                <Image x:Name="imgCaratula"
+                                        <Image x:Name="imgCaratula"
                                                     Width="100" Height="120"                                         
                                                     Source="{Binding SelectedItem.Caratula, ElementName=lstListaFestivales}" 
                                                     Stretch="Fill"/>
-                                            </Border>
+                                    </Border>
 
-                                            <Button x:Name="btnCargarImagen"
+                                    <Button x:Name="btnCargarImagen"
                                                     Content="+" ToolTip="Cambiar imagen"
                                                     VerticalAlignment="Bottom" HorizontalAlignment="Right"
                                                     Margin = "5" FontSize="30" FontWeight ="Bold"
                                                     Background="Transparent" BorderBrush="Transparent"
-                                                    Foreground="Blue"/>
-                                        </Grid>
+                                                    Foreground="#36BA98"/>
+                                </Grid>
 
-                                        <Label x:Name="lblArtista" Grid.Row="0" Grid.Column="1" FontWeight="Bold" FontSize="15" Content="Contacto: "/>
-                                        <TextBox x:Name="txtAnio" Grid.Row="0" Grid.Column="2" Text="{Binding SelectedItem.Contacto, ElementName=lstListaFestivales}"/>
-                                        <Label x:Name="lblWEB" Grid.Row="1" Grid.Column="1" FontSize="15" Content="web sitie: "/>
-                                        <TextBox x:Name="txtweb" Grid.Row="1" Grid.Column="2" Text="{Binding SelectedItem.Redes_sociales, ElementName=lstListaFestivales}"/>
-                                        <Label x:Name="lblEstado" Grid.Row="2" Grid.Column="1" FontSize="15" Content="Estado: "/>
-                                        <ComboBox x:Name="cbEstado" Grid.Row="2" Grid.Column="2" Margin="3">
-                                            <ComboBoxItem IsSelected="True">Sin definir</ComboBoxItem>
-                                            <ComboBoxItem>Confirmado</ComboBoxItem>
-                                            <ComboBoxItem>Cancelado</ComboBoxItem>
+                                <Label x:Name="lblFestival" Grid.Row="0" Grid.Column="1" FontWeight="Bold" FontSize="15" Content="Contacto: "/>
+                                <TextBox x:Name="txtContacto" Grid.Row="0" Grid.Column="2" TabIndex="2" Text="{Binding SelectedItem.Contacto, ElementName=lstListaFestivales}" Background="#E9C46A" BorderBrush="Transparent" Foreground="DarkBlue" Margin="0,0,3,0" />
+                                <Label x:Name="lblWEB" Grid.Row="1" Grid.Column="1" FontSize="15" Content="web sitie: "/>
+                                <TextBox x:Name="txtweb" Grid.Column="2" Text="{Binding SelectedItem.Redes_sociales, ElementName=lstListaFestivales}" Background="#E9C46A" BorderBrush="Transparent" Foreground="DarkBlue" TextDecorations="Underline" Margin="0,32,3,32" Grid.RowSpan="3" />
+                                <Label x:Name="lblEstado" Grid.Row="2" Grid.Column="1" FontSize="15" Content="Estado: "/>
+                                <ComboBox x:Name="cbEstado" Grid.Row="2" Grid.Column="2" Margin="0,3,3,3">
+                                    <ComboBoxItem IsSelected="True">Sin definir</ComboBoxItem>
+                                    <ComboBoxItem>Confirmado</ComboBoxItem>
+                                    <ComboBoxItem>Cancelado</ComboBoxItem>
 
-                                        </ComboBox>
-                                        <Label Content="Género:" Grid.Row="3" Grid.Column="1"/>
-                                        <ComboBox x:Name="cbGenero" Grid.Row="3" Grid.Column="2" Margin="3">
-                                            <ComboBoxItem IsSelected="True">Sin definir</ComboBoxItem>
-                                            <ComboBoxItem>Rock</ComboBoxItem>
-                                            <ComboBoxItem>Urbano</ComboBoxItem>
-                                            <ComboBoxItem>Pop</ComboBoxItem>
-                                        </ComboBox>
-                                    </Grid>
-                                </GroupBox>
-                                <GroupBox Grid.Row="2" BorderBrush="Gray" Grid.ColumnSpan="2">
-                                    <GroupBox.Header>
-                                        <Border Background="Gray" >
-                                            <TextBlock Text="Detalles" Foreground="White"/>
-                                        </Border>
-                                    </GroupBox.Header>
-                                    <UniformGrid x:Name="ugDetalles" Columns="2" Rows="1" >
-                                        <Expander Grid.Column="0" IsExpanded="True"
-                                            Header="Artistas" ToolTip="Artistas que actúan en el festival">
-                                            <ListBox x:Name="lbArtistas" ItemsSource="{Binding SelectedItem.Artistas, ElementName=lstListaFestivales}" MouseDoubleClick="lbArtistas_MouseDoubleClick">
-                                                <ListBox.ItemTemplate>
-                                                    <DataTemplate>
-                                                        <TextBlock Text="{Binding Nombre}" />
-                                                    </DataTemplate>
-                                                </ListBox.ItemTemplate>
-                                            </ListBox>
-                                        </Expander>
-
-                                        <Expander Grid.Column="1" IsExpanded="True"
+                                </ComboBox>
+                                <Label Content="Género:" Grid.Row="3" Grid.Column="1"/>
+                                <ComboBox x:Name="cbGenero" Grid.Row="3" Grid.Column="2" Margin="0,3,3,3">
+                                    <ComboBoxItem IsSelected="True">Sin definir</ComboBoxItem>
+                                    <ComboBoxItem>Rock</ComboBoxItem>
+                                    <ComboBoxItem>Urbano</ComboBoxItem>
+                                    <ComboBoxItem>Pop</ComboBoxItem>
+                                </ComboBox>
+                            </Grid>
+                        </GroupBox>
+                        <GroupBox Grid.Row="2" BorderBrush="#E9C46A" Grid.ColumnSpan="2">
+                            <GroupBox.Header>
+                                <Border Background="#E76F51" >
+                                    <TextBlock Text="Detalles" Foreground="Black"/>
+                                </Border>
+                            </GroupBox.Header>
+                            <UniformGrid x:Name="ugDetalles" Columns="2" Rows="1" >
+                                <Expander Grid.Column="0" IsExpanded="True"
+                                            Header="Artistas" ToolTip="Artistas que actuan en el festival">
+                                    <ListBox x:Name="lbArtistas" ItemsSource="{Binding SelectedItem.Artistas, ElementName=lstListaFestivales}" Background="#E9C46A" BorderBrush="Transparent"
+                                        MouseDoubleClick="lbArtistas_MouseDoubleClick">
+                                        <ListBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding Nombre}" />
+                                            </DataTemplate>
+                                        </ListBox.ItemTemplate>
+                                    </ListBox>
+                                </Expander>
+                                <Expander IsExpanded="True"
                                             Header="Descripción"
-                                            ToolTip="Descripción del artista">
-                                            <TextBox x:Name="txtDescripción"
+                                            ToolTip="Descripción del festival">
+                                    <TextBox x:Name="txtDescripcion"
                                                 TextWrapping="Wrap"
                                                 AcceptsReturn="True"
                                                 VerticalScrollBarVisibility="Visible"
-                                                Text="{Binding SelectedItem.Descripcion, ElementName=lstListaFestivales}" Height="auto"/>
-                                        </Expander>
-                                    </UniformGrid>
-                                </GroupBox>
-                                <GroupBox Grid.Row="3" BorderBrush="red" Grid.ColumnSpan="2">
-                                    <GroupBox.Header>
-                                        <Border Background="red" >
-                                            <TextBlock Text="Información del festival" Foreground="White"/>
-                                        </Border>
-                                    </GroupBox.Header>
-
-                                    <Expander Grid.Column="0" IsExpanded="True"
-                                              Header="Información" ToolTip="Información sobre el festival">
-                                        <TextBox x:Name="txtInfoFestival"
-                                                 TextWrapping="Wrap"
-                                                 AcceptsReturn="True"
-                                                 VerticalScrollBarVisibility="Visible"
-                                                 Margin="5"
-                                                 Text="{Binding SelectedItem.Integrantes, ElementName=lstListaFestivales}">
-                                        </TextBox>
-                                    </Expander>
-                                </GroupBox>
-                            </Grid>
+                                                Margin="5"
+                                                Text="{Binding SelectedItem.Descripcion, ElementName=lstListaFestivales}" Background="#E9C46A" BorderBrush="Transparent"/>
+                                </Expander>
+                            </UniformGrid>
                         </GroupBox>
-                    </StackPanel>
-                </Grid>
-            </TabItem>
-        </TabControl>
+                        <GroupBox Grid.Row="3" BorderBrush="#E9C46A" Grid.ColumnSpan="2">
+                            <GroupBox.Header>
+                                <Border Background="#E76F51" >
+                                    <TextBlock Text="Información del festival" Foreground="Black"/>
+                                </Border>
+                            </GroupBox.Header>
+                            <UniformGrid x:Name="ugInformacion" Columns="2" Rows="1">
+                                <Expander Grid.Column="0" IsExpanded="True" Header="Precios" ToolTip="Información sobre el festival">
+                                    <ListBox x:Name="lbPrecios" Margin="5" 
+                                              Background="#E9C46A" BorderBrush="Transparent" RenderTransformOrigin="0.139,0.488" ItemsSource="{Binding SelectedItem.Precios, ElementName=lstListaFestivales}" >
+                                    </ListBox>
+                                </Expander>
+                                <Calendar x:Name="calFechas" SelectedDatesChanged="calFechas_SelectedDatesChanged" SelectionMode="MultipleRange">
+                                    
+                                </Calendar>
+
+
+                            </UniformGrid>
+                        </GroupBox>
+                        <Button x:Name="btnGuardar"
+                                        Grid.Row="4"
+                                        Content="Guardar"
+                                        FontSize="16" FontWeight="Bold"
+                                        Width="130"
+                                        ToolTip="Pulsar para guardar"
+                                        HorizontalAlignment="Right"
+                                        Margin="0,20,28,-20" Background="#E9C46A" Click="btnGuardar_Click"/>
+                    </Grid>
+                </GroupBox>
+            </StackPanel>
+
+        </Grid>
+
 
     </Grid>
 

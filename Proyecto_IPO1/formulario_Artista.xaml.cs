@@ -75,7 +75,7 @@ namespace Proyecto_IPO1
         {
 
             ArtistaGuardar.Nombre = txtNombre.Text;
-            ArtistaGuardar.Integrantes = txtInfoArtistas.Text;
+            ArtistaGuardar.Integrantes = txtInfoArtista.Text;
             ArtistaGuardar.Genero = cbGenero.Text;
             ArtistaGuardar.Redes_sociales = new Uri(txtweb.Text, UriKind.Absolute);
             ArtistaGuardar.Descripcion = txtDescripción.Text;
@@ -93,6 +93,11 @@ namespace Proyecto_IPO1
         private void miAcercaDe_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("Aplicación realizada por ...", "Acerca de");
+        }
+
+        private void miEliminarItemLB_Click(object sender, RoutedEventArgs e)
+        {
+            lstListaArtistas.Items.Remove(lstListaArtistas.SelectedItem);
         }
     }
 

@@ -5,7 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Proyecto_IPO1"
         mc:Ignorable="d"
-        Title="Artistas" Height="720" Width="1280">
+        Title="Artistas" Height="720" Width="1280"
+        ResizeMode="NoResize"
+        WindowStyle="SingleBorderWindow"
+        WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="25"/>
@@ -20,221 +23,161 @@
                     </MenuItem.Icon>
                 </MenuItem>
                 <Separator/>
-                <MenuItem x:Name="miSalir" Header="Salir"/>
+                <MenuItem x:Name="miSalir" Header="Salir" Click="miSalir_Click"/>
             </MenuItem>
             <MenuItem Header="Ayuda" >
                 <MenuItem x:Name="miAcercaDe" Header="Acerca de..." />
             </MenuItem>
         </Menu>
-        
-            
-            
-                <Grid Grid.Row="1">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="25*"/>
-                        <ColumnDefinition Width="auto"/>
-                        <ColumnDefinition Width="75*"/>
-                    </Grid.ColumnDefinitions>
-                <ListBox x:Name="lstListaArtistas" Grid.Column="0"  SelectedIndex="0" Margin="5" Background="#FFC8C8C8">
-                        <ListBox.ItemTemplate>
-                            <DataTemplate>
-                                <StackPanel Orientation="Horizontal">
-                                    <Image Width="32" Height="37"
-                                            Source="{Binding Caratula}"/>
-                                    <TextBlock VerticalAlignment="Center"
-                                            Margin="10,0,0,0"
-                                            Text="{Binding Nombre}"/>
-                                </StackPanel>
-                            </DataTemplate>
-                        </ListBox.ItemTemplate>
-                        <ListBox.ItemContainerStyle>
-                            <Style TargetType="ListBoxItem">
-                                <Setter Property="Margin" Value="2"/>
-                                <Style.Triggers>
-                                    <Trigger Property="IsSelected" Value="True">
-                                        <Setter Property="Foreground" Value="Blue"/>
-                                        <Setter Property="FontWeight" Value="Bold"/>
-                                        <Setter Property="BorderBrush" Value="Blue"/>
-                                        <Setter Property="BorderThickness" Value="3"/>
-                                    </Trigger>
-                                </Style.Triggers>
-                            </Style>
-                        </ListBox.ItemContainerStyle>
-                        <ListBox.ContextMenu>
-                            <ContextMenu>
-                                <MenuItem x:Name="miAniadirItemLB" Header="Añadir ítem" >
-                                    <MenuItem.Icon>
-                                        <Image Source="images/add_c.png"/>
-                                    </MenuItem.Icon>
-                                </MenuItem>
-                                <MenuItem x:Name="miEliminarItemLB" Header="Eliminar ítem">
-                                    <MenuItem.Icon>
-                                        <Image Source="images/remove_c.png"/>
-                                    </MenuItem.Icon>
-                                </MenuItem>
-                            </ContextMenu>
-                        </ListBox.ContextMenu>
-                    </ListBox>
 
-                    <GridSplitter Grid.Column="1" Width="5"
-                        HorizontalAlignment="Stretch"/>
-            <StackPanel x:Name="spDetallesArtistas" Grid.Column="2" Orientation="Vertical" Background="#FFA5A5A5" Cursor="">
-                        <GroupBox Grid.Row="1" BorderBrush="Black"
-                            Background="AliceBlue" Height="674" >
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="25*"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="75*"/>
+            </Grid.ColumnDefinitions>
+            <ListBox x:Name="lstListaArtistas" Grid.Column="0" SelectedIndex="0" Margin="5" Background="#36BA98">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Width="32" Height="37" Source="{Binding Caratula}"/>
+                            <TextBlock VerticalAlignment="Center" Margin="10,0,0,0" Text="{Binding Nombre}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+                <ListBox.ItemContainerStyle>
+                    <Style TargetType="ListBoxItem">
+                        <Setter Property="Margin" Value="2"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Foreground" Value="Blue"/>
+                                <Setter Property="FontWeight" Value="Bold"/>
+                                <Setter Property="BorderBrush" Value="Blue"/>
+                                <Setter Property="BorderThickness" Value="3"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </ListBox.ItemContainerStyle>
+                <ListBox.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem x:Name="miAniadirItemLB" Header="Añadir ítem">
+                            <MenuItem.Icon>
+                                <Image Source="images/add_c.png"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem x:Name="miEliminarItemLB" Header="Eliminar ítem" Click="miEliminarItemLB_Click">
+                            <MenuItem.Icon>
+                                <Image Source="images/remove_c.png"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                    </ContextMenu>
+                </ListBox.ContextMenu>
+            </ListBox>
+
+            <GridSplitter Grid.Column="1" Width="5" HorizontalAlignment="Stretch"/>
+            <StackPanel x:Name="spDetallesArtistas" Grid.Column="2" Orientation="Vertical" Background="#E76F51" Cursor="">
+                <GroupBox Grid.Row="1" BorderBrush="#E9C46A" Background="#E76F51" Height="674">
+                    <GroupBox.Header>
+                        <Border Background="#E76F51" TextBlock.FontSize="22">
+                            <TextBlock Text="Artista" Foreground="Black"/>
+                        </Border>
+                    </GroupBox.Header>
+
+                    <Grid x:Name="pnArtistas">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="150"/>
+                            <RowDefinition Height="205"/>
+                            <RowDefinition Height="50"/>
+                        </Grid.RowDefinitions>
+
+                        <Border Grid.Row="0" Background="#E76F51" TextBlock.FontSize="18" Grid.ColumnSpan="2" >
+                            <WrapPanel Orientation="Horizontal">
+                                <Label Content="Nombre:" Foreground="Black" FontSize="20"/>
+                                <TextBox x:Name="txtNombre" Width="500" FontSize="20" Text="{Binding ElementName=lstListaArtistas,Path=SelectedItem.Nombre}" Background="#E9C46A" BorderBrush="Transparent"/>
+                            </WrapPanel>
+                        </Border>
+
+                        <GroupBox Grid.Row="1" BorderBrush="#E9C46A" Grid.ColumnSpan="2" Margin="5,5,5,5">
                             <GroupBox.Header>
-                                <Border Background="Black" TextBlock.FontSize="22" >
-                                    <TextBlock Text="Artista" Foreground ="White"/>
+                                <Border Background="#E76F51">
+                                    <TextBlock Text="Ficha técnica" Foreground="Black"/>
                                 </Border>
                             </GroupBox.Header>
 
-                            <Grid x:Name="pnArtistas">
+                            <Grid x:Name="pnlFichaTecnica">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="15*"/>
+                                    <ColumnDefinition Width="15*"/>
+                                    <ColumnDefinition Width="50*"/>
+                                    <ColumnDefinition Width="20*"/>
+                                </Grid.ColumnDefinitions>
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="auto"/>
-                                    <RowDefinition Height="auto"/>
-                                    <RowDefinition Height="150"/>
-                                    <RowDefinition Height="205"/>
-                                    <RowDefinition Height="50"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
                                 </Grid.RowDefinitions>
+                                <Grid Grid.Column="0" Grid.RowSpan="4">
+                                    <Border BorderBrush="#36BA98" Background="Transparent" BorderThickness="2" Margin="5,2,2,2">
+                                        <Image x:Name="imgCaratula" Width="100" Height="120" Source="{Binding SelectedItem.Caratula, ElementName=lstListaArtistas}" Stretch="Fill"/>
+                                    </Border>
 
-                                <Border Grid.Row="0" Background="DarkBlue"
-                                        TextBlock.FontSize="18" Grid.ColumnSpan="2" >
+                                    <Button x:Name="btnCargarImagen" Content="+" ToolTip="Cambiar imagen" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="5" FontSize="30" FontWeight="Bold" Background="Transparent" BorderBrush="Transparent" Foreground="#36BA98"/>
+                                </Grid>
 
-                                    <WrapPanel Orientation="Horizontal">
-                                        <Label Content="Nombre:" Foreground="White"
-                                          FontSize="20"/>
-                                        <TextBox x:Name="txtNombre" Width="500"
-                                           FontSize="20" Text="{Binding ElementName=lstListaArtistas,Path=SelectedItem.Nombre}"/>
-                                    </WrapPanel>
-                                </Border>
+                                <Label x:Name="lblArtista" Grid.Row="0" Grid.Column="1" FontWeight="Bold" FontSize="15" Content="Contacto:"/>
+                                <TextBox x:Name="txtContacto" Grid.Row="0" Grid.Column="2" TabIndex="2" Background="#E9C46A" BorderBrush="Transparent" Foreground="DarkBlue" Text="{Binding SelectedItem.Contacto,ElementName=lstListaArtistas}"/>
 
-                                <GroupBox  Grid.Row="1" BorderBrush="Blue" 
-                                Grid.ColumnSpan="2" Margin="5,5,5,5">
-
-                                    <GroupBox.Header>
-                                        <Border Background="Blue" >
-                                            <TextBlock Text="Ficha técnica" Foreground="White"/>
-                                        </Border>
-                                    </GroupBox.Header>
-
-                                    <Grid x:Name="pnlFichaTecnica">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="15*" />
-                                            <ColumnDefinition Width="15*" />
-                                            <ColumnDefinition Width="50*" />
-                                            <ColumnDefinition Width="20*" />
-
-                                        </Grid.ColumnDefinitions>
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="Auto" />
-                                            <RowDefinition Height="Auto" />
-                                            <RowDefinition Height="Auto" />
-                                            <RowDefinition Height="Auto" />
-                                        </Grid.RowDefinitions>
-                                        <Grid Grid.Column="0" Grid.RowSpan="4">
-                                            <Border BorderBrush="Blue" Background="Transparent"
-                                                BorderThickness="2" Margin="5,2,2,2" >
-                                                <Image x:Name="imgCaratula"
-                                                    Width="100" Height="120"                                         
-                                                    Source="{Binding SelectedItem.Caratula, ElementName=lstListaArtistas}" 
-                                                    Stretch="Fill"/>
-                                            </Border>
-
-                                            <Button x:Name="btnCargarImagen"
-                                                    Content="+" ToolTip="Cambiar imagen"
-                                                    VerticalAlignment="Bottom" HorizontalAlignment="Right"
-                                                    Margin = "5" FontSize="30" FontWeight ="Bold"
-                                                    Background="Transparent" BorderBrush="Transparent"
-                                                    Foreground="Blue"/>
-                                        </Grid>
-
-                                        <Label x:Name="lblArtista" Grid.Row="0" Grid.Column="1" FontWeight="Bold" FontSize="15" Content="Contacto: "/>
-                                        <TextBox x:Name="txtContacto" Grid.Row="0" Grid.Column="2" TabIndex="2">
-                                            <TextBox.Text>
-                                                <Binding Path="Contacto "
-                                                    ValidatesOnDataErrors="True"
-                                                    UpdateSourceTrigger="PropertyChanged">
-                                                </Binding>
-                                            </TextBox.Text>
-                                        </TextBox>
-                                        <Label x:Name="lblWEB" Grid.Row="1" Grid.Column="1" FontSize="15" Content="web sitie: "/>
-                                        <TextBox x:Name="txtweb" Grid.Row="1" Grid.Column="2" Text="{Binding SelectedItem.Redes_sociales, ElementName=lstListaArtistas}"/>
-                                        <Label x:Name="lblEstado" Grid.Row="2" Grid.Column="1" FontSize="15" Content="Estado: "/>
-                                        <ComboBox x:Name="cbEstado" Grid.Row="2" Grid.Column="2" Margin="3">
-                                            <ComboBoxItem IsSelected="True">Sin definir</ComboBoxItem>
-                                            <ComboBoxItem>Confirmado</ComboBoxItem>
-                                            <ComboBoxItem>Cancelado</ComboBoxItem>
-
-                                        </ComboBox>
-                                        <Label Content="Género:" Grid.Row="3" Grid.Column="1"/>
-                                        <ComboBox x:Name="cbGenero" Grid.Row="3" Grid.Column="2" Margin="3">
-                                            <ComboBoxItem IsSelected="True">Sin definir</ComboBoxItem>
-                                            <ComboBoxItem>Rock</ComboBoxItem>
-                                            <ComboBoxItem>Urbano</ComboBoxItem>
-                                            <ComboBoxItem>Pop</ComboBoxItem>
-                                        </ComboBox>
-                                    </Grid>
-                                </GroupBox>
-                                <GroupBox Grid.Row="2" BorderBrush="Gray" Grid.ColumnSpan="2">
-                                    <GroupBox.Header>
-                                        <Border Background="Gray" >
-                                            <TextBlock Text="Detalles" Foreground="White"/>
-                                        </Border>
-                                    </GroupBox.Header>
-                                    <UniformGrid x:Name="ugDetalles" Columns="2" Rows="1" >
-                                        <Expander Grid.Column="0" IsExpanded="True"
-                                            Header="Festivales" ToolTip="Festivales donde actuan los artistas">
-                                            <ListBox x:Name="lbFestivales" ItemsSource="{Binding SelectedItem.Festivales, ElementName=lstListaArtistas}">
-
-                                            </ListBox>
-                                        </Expander>
-
-                                        <Expander Grid.Column="1" IsExpanded="True"
-                                            Header="Descripción"
-                                            ToolTip="Descripción del artista">
-                                            <TextBox x:Name="txtDescripción"
-                                                TextWrapping="Wrap"
-                                                AcceptsReturn="True"
-                                                VerticalScrollBarVisibility="Visible"
-                                                Margin="5"
-                                                Text="{Binding SelectedItem.Descripcion, ElementName=lstListaArtistas}">
-                                            </TextBox>
-                                        </Expander>
-                                    </UniformGrid>
-                                </GroupBox>
-                                <GroupBox Grid.Row="3" BorderBrush="red" Grid.ColumnSpan="2">
-                                    <GroupBox.Header>
-                                        <Border Background="red" >
-                                            <TextBlock Text="Información del artista" Foreground="White"/>
-                                        </Border>
-                                    </GroupBox.Header>
-
-                                    <Expander Grid.Column="0" IsExpanded="True"
-                                              Header="Información" ToolTip="Información sobre los artistas">
-                                        <TextBox x:Name="txtInfoArtistas"
-                                                 TextWrapping="Wrap"
-                                                 AcceptsReturn="True"
-                                                 VerticalScrollBarVisibility="Visible"
-                                                 Margin="5"
-                                                 Text="{Binding SelectedItem.Integrantes, ElementName=lstListaArtistas}">
-                                        </TextBox>
-                                    </Expander>
-                                </GroupBox>
-                                <Button x:Name="btnGuardar"
-                                        Grid.Row="4"
-                                        Content="Guardar"
-                                        FontSize="16" FontWeight="Bold"
-                                        Width="130"
-                                        ToolTip="Pulsar para guardar"
-                                        HorizontalAlignment="Right"
-                                        Margin="0,20,28,-20" />     
+                                <Label x:Name="lblWEB" Grid.Row="1" Grid.Column="1" FontSize="15" Content="web sitie:"/>
+                                <TextBox x:Name="txtweb" Grid.Row="1" Grid.Column="2" Text="{Binding SelectedItem.Redes_sociales, ElementName=lstListaArtistas}" Background="#E9C46A" BorderBrush="Transparent" Foreground="DarkBlue"/>
+                                <Label x:Name="lblEstado" Grid.Row="2" Grid.Column="1" FontSize="15" Content="Estado:"/>
+                                <ComboBox x:Name="cbEstado" Grid.Row="2" Grid.Column="2" Margin="3">
+                                    <ComboBoxItem IsSelected="True">Sin definir</ComboBoxItem>
+                                    <ComboBoxItem>Confirmado</ComboBoxItem>
+                                    <ComboBoxItem>Cancelado</ComboBoxItem>
+                                </ComboBox>
+                                <Label Content="Género:" Grid.Row="3" Grid.Column="1"/>
+                                <ComboBox x:Name="cbGenero" Grid.Row="3" Grid.Column="2" Margin="3">
+                                    <ComboBoxItem IsSelected="True">Sin definir</ComboBoxItem>
+                                    <ComboBoxItem>Rock</ComboBoxItem>
+                                    <ComboBoxItem>Urbano</ComboBoxItem>
+                                    <ComboBoxItem>Pop</ComboBoxItem>
+                                </ComboBox>
                             </Grid>
                         </GroupBox>
-                    </StackPanel>
-                    
-                </Grid>
-           
-   
-    </Grid>
-    
+                        <GroupBox Grid.Row="2" BorderBrush="#E9C46A" Grid.ColumnSpan="2" >
+                            <GroupBox.Header>
+                                <Border Background="#E76F51">
+                                    <TextBlock Text="Detalles" Foreground="Black"/>
+                                </Border>
+                            </GroupBox.Header>
+                            <UniformGrid x:Name="ugDetalles" Columns="2" Rows="1">
+                                <Expander Grid.Column="0" IsExpanded="True" Header="Festivales" ToolTip="Festivales donde actuan los artistas">
+                                    <ListBox x:Name="lbFestivales" ItemsSource="{Binding SelectedItem.Festivales, ElementName=lstListaArtistas}" Background="#E9C46A" BorderBrush="Transparent"/>
+                                </Expander>
 
+                                <Expander Grid.Column="1" IsExpanded="True" Header="Descripción" ToolTip="Descripción del artista">
+                                    <TextBox x:Name="txtDescripción" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" Margin="5" Text="{Binding SelectedItem.Descripcion, ElementName=lstListaArtistas}" Background="#E9C46A" BorderBrush="Transparent"/>
+                                </Expander>
+                            </UniformGrid>
+                        </GroupBox>
+                        <GroupBox Grid.Row="3" BorderBrush="#E9C46A" Grid.ColumnSpan="2">
+                            <GroupBox.Header>
+                                <Border Background="#E76F51">
+                                    <TextBlock Text="Información del artista" Foreground="Black"/>
+                                </Border>
+                            </GroupBox.Header>
+
+                            <Expander Grid.Column="0" IsExpanded="True" Header="Información" ToolTip="Información sobre los artistas">
+                                <TextBox x:Name="txtInfoArtista" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" Margin="5" Text="{Binding SelectedItem.Integrantes, ElementName=lstListaArtistas}" Background="#E9C46A" BorderBrush="Transparent"/>
+                            </Expander>
+                        </GroupBox>
+                        <Button x:Name="btnGuardar" Grid.Row="4" Content="Guardar" FontSize="16" FontWeight="Bold" Width="130" ToolTip="Pulsar para guardar" HorizontalAlignment="Right" Margin="0,20,28,-20" Background="#E9C46A"/>
+                    </Grid>
+                </GroupBox>
+            </StackPanel>
+        </Grid>
+    </Grid>
 </Window>
