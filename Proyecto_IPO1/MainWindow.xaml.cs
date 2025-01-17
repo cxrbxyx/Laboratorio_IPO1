@@ -111,6 +111,12 @@ namespace Proyecto_IPO1
             return usuarios;
         }
 
+        private void btnAyuda_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Ayuda: Ventana login debes introducir tu correo de usuario en la casilla usuario\n" +
+                "Una vez introducido el usuario introduzca la contraseña en la casilla de abajo, una vez hecho todo dale al boton iniciar sesión");
+        }
+
 
 
     }

@@ -106,6 +106,17 @@
                 Margin="0,0,0,10"
                 TabIndex ="3" Click="btnLogin_Click" IsEnabled="False" Visibility="Hidden"
                 />
-        
+
+        <Button x:Name="btnAyuda" 
+                Grid.Row="6" Grid.Column="3" Grid.ColumnSpan="3" 
+                Width="40
+                " Height="40" 
+                Margin="0,0,22,5"
+                TabIndex ="3">
+                <StackPanel Orientation="Horizontal">
+                <Image Source="Images/ayuda.png" Width="32" Height="32" Margin="0,0,0,0"/>
+            </StackPanel>
+        </Button>     
+
     </Grid>
 </Window>
