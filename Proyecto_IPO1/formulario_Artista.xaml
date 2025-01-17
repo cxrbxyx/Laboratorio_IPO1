@@ -36,7 +36,7 @@
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="75*"/>
             </Grid.ColumnDefinitions>
-            <ListBox x:Name="lstListaArtistas" Grid.Column="0" SelectedIndex="0" Margin="5" Background="#36BA98">
+            <ListBox x:Name="lstListaArtistas" Grid.Column="0" SelectedIndex="0" Margin="5" Background="#76ABAE">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
@@ -50,9 +50,9 @@
                         <Setter Property="Margin" Value="2"/>
                         <Style.Triggers>
                             <Trigger Property="IsSelected" Value="True">
-                                <Setter Property="Foreground" Value="Blue"/>
+                                <Setter Property="Foreground" Value="#EEEEEE"/>
                                 <Setter Property="FontWeight" Value="Bold"/>
-                                <Setter Property="BorderBrush" Value="Blue"/>
+                                <Setter Property="BorderBrush" Value="#EEEEEE"/>
                                 <Setter Property="BorderThickness" Value="3"/>
                             </Trigger>
                         </Style.Triggers>
@@ -75,11 +75,11 @@
             </ListBox>
 
             <GridSplitter Grid.Column="1" Width="5" HorizontalAlignment="Stretch"/>
-            <StackPanel x:Name="spDetallesArtistas" Grid.Column="2" Orientation="Vertical" Background="#E76F51" Cursor="">
-                <GroupBox Grid.Row="1" BorderBrush="#E9C46A" Background="#E76F51" Height="674">
+            <StackPanel x:Name="spDetallesArtistas" Grid.Column="2" Orientation="Vertical" Background="#222831" Cursor="">
+                <GroupBox Grid.Row="1" BorderBrush="#EEEEEE" Background="#222831" Height="674">
                     <GroupBox.Header>
-                        <Border Background="#E76F51" TextBlock.FontSize="22">
-                            <TextBlock Text="Artista" Foreground="Black"/>
+                        <Border Background="#222831" TextBlock.FontSize="22">
+                            <TextBlock Text="Artista" Foreground="#EEEEEE"/>
                         </Border>
                     </GroupBox.Header>
 
@@ -92,10 +92,10 @@
                             <RowDefinition Height="50"/>
                         </Grid.RowDefinitions>
 
-                        <Border Grid.Row="0" Background="#E76F51" TextBlock.FontSize="18" Grid.ColumnSpan="2" >
+                        <Border Grid.Row="0" Background="#222831" TextBlock.FontSize="18" Grid.ColumnSpan="2" >
                             <WrapPanel Orientation="Horizontal">
-                                <Label Content="Nombre:" Foreground="Black" FontSize="20"/>
-                                <TextBox x:Name="txtNombre" Width="500" FontSize="20" Text="{Binding ElementName=lstListaArtistas,Path=SelectedItem.Nombre}" Background="#E9C46A" BorderBrush="Transparent"/>
+                                <Label Content="Nombre:" Foreground="#EEEEEE" FontSize="20"/>
+                                <TextBox x:Name="txtNombre" Width="500" FontSize="20" Text="{Binding ElementName=lstListaArtistas,Path=SelectedItem.Nombre}" Background="#EEEEEE" BorderBrush="Transparent" Foreground="#222831"/>
                                 <Button x:Name="btnUsuario"
                                     Width="35" Height="35"                                         
                                        Margin="300,0,0,0" Click="btnUsuario_Click">
@@ -106,10 +106,10 @@
                             </WrapPanel>
                         </Border>
 
-                        <GroupBox Grid.Row="1" BorderBrush="#E9C46A" Grid.ColumnSpan="2" Margin="5,5,5,5">
+                        <GroupBox Grid.Row="1" BorderBrush="#EEEEEE" Grid.ColumnSpan="2" Margin="5,5,5,5">
                             <GroupBox.Header>
-                                <Border Background="#E76F51">
-                                    <TextBlock Text="Ficha técnica" Foreground="Black"/>
+                                <Border Background="#222831">
+                                    <TextBlock Text="Ficha técnica" Foreground="#EEEEEE"/>
                                 </Border>
                             </GroupBox.Header>
 
@@ -127,26 +127,26 @@
                                     <RowDefinition Height="Auto"/>
                                 </Grid.RowDefinitions>
                                 <Grid Grid.Column="0" Grid.RowSpan="4">
-                                    <Border BorderBrush="#36BA98" Background="Transparent" BorderThickness="2" Margin="5,2,2,2">
+                                    <Border BorderBrush="#EEEEEE" Background="Transparent" BorderThickness="2" Margin="5,2,2,2">
                                         <Image x:Name="imgCaratula" Width="100" Height="120" Source="{Binding SelectedItem.Caratula, ElementName=lstListaArtistas}" Stretch="Fill"/>
                                     </Border>
 
                                     <Button x:Name="btnCargarImagen" Click="btnCargarImagen_Click"
-                                            Content="+" ToolTip="Cambiar imagen" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="5" FontSize="30" FontWeight="Bold" Background="Transparent" BorderBrush="Transparent" Foreground="#36BA98"/>
+                                            Content="+" ToolTip="Cambiar imagen" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="5" FontSize="30" FontWeight="Bold" Background="Transparent" BorderBrush="Transparent" Foreground="#EEEEEE"/>
                                 </Grid>
 
-                                <Label x:Name="lblArtista" Grid.Row="0" Grid.Column="1" FontWeight="Bold" FontSize="15" Content="Contacto:"/>
-                                <TextBox x:Name="txtContacto" Grid.Row="0" Grid.Column="2" TabIndex="2" Background="#E9C46A" BorderBrush="Transparent" Foreground="DarkBlue" Text="{Binding SelectedItem.Contacto,ElementName=lstListaArtistas}"/>
+                                <Label x:Name="lblArtista" Grid.Row="0" Grid.Column="1" FontWeight="Bold" FontSize="15" Content="Contacto:" Foreground="#EEEEEE"/>
+                                <TextBox x:Name="txtContacto" Grid.Row="0" Grid.Column="2" TabIndex="2" Background="#EEEEEE" BorderBrush="Transparent" Foreground="#222831" Text="{Binding SelectedItem.Contacto,ElementName=lstListaArtistas}"/>
 
-                                <Label x:Name="lblWEB" Grid.Row="1" Grid.Column="1" FontSize="15" Content="web sitie:"/>
-                                <TextBox x:Name="txtweb" Grid.Row="1" Grid.Column="2" Text="{Binding SelectedItem.Redes_sociales, ElementName=lstListaArtistas}" Background="#E9C46A" BorderBrush="Transparent" Foreground="DarkBlue"/>
-                                <Label x:Name="lblEstado" Grid.Row="2" Grid.Column="1" FontSize="15" Content="Estado:"/>
+                                <Label x:Name="lblWEB" Grid.Row="1" Grid.Column="1" FontSize="15" Content="web sitie:" Foreground="#EEEEEE"/>
+                                <TextBox x:Name="txtweb" Grid.Row="1" Grid.Column="2" Text="{Binding SelectedItem.Redes_sociales, ElementName=lstListaArtistas}" Background="#EEEEEE" BorderBrush="Transparent" Foreground="#222831"/>
+                                <Label x:Name="lblEstado" Grid.Row="2" Grid.Column="1" FontSize="15" Content="Estado:" Foreground="#EEEEEE"/>
                                 <ComboBox x:Name="cbEstado" Grid.Row="2" Grid.Column="2" Margin="3">
                                     <ComboBoxItem IsSelected="True">Sin definir</ComboBoxItem>
                                     <ComboBoxItem>Confirmado</ComboBoxItem>
                                     <ComboBoxItem>Cancelado</ComboBoxItem>
                                 </ComboBox>
-                                <Label Content="Género:" Grid.Row="3" Grid.Column="1"/>
+                                <Label Content="Género:" Grid.Row="3" Grid.Column="1" Foreground="#EEEEEE"/>
                                 <ComboBox x:Name="cbGenero" Grid.Row="3" Grid.Column="2" Margin="3">
                                     <ComboBoxItem IsSelected="True">Sin definir</ComboBoxItem>
                                     <ComboBoxItem>Rock</ComboBoxItem>
@@ -155,39 +155,39 @@
                                 </ComboBox>
                             </Grid>
                         </GroupBox>
-                        <GroupBox Grid.Row="2" BorderBrush="#E9C46A" Grid.ColumnSpan="2" >
+                        <GroupBox Grid.Row="2" BorderBrush="#EEEEEE" Grid.ColumnSpan="2" >
                             <GroupBox.Header>
-                                <Border Background="#E76F51">
-                                    <TextBlock Text="Detalles" Foreground="Black"/>
+                                <Border Background="#222831">
+                                    <TextBlock Text="Detalles" Foreground="#EEEEEE"/>
                                 </Border>
                             </GroupBox.Header>
                             <UniformGrid x:Name="ugDetalles" Columns="2" Rows="1">
-                                <Expander Grid.Column="0" IsExpanded="True" Header="Festivales" ToolTip="Festivales donde actuan los artistas">
-                                    <ListBox x:Name="lbFestivales" ItemsSource="{Binding SelectedItem.Festivales, ElementName=lstListaArtistas}" Background="#E9C46A" BorderBrush="Transparent"/>
+                                <Expander Grid.Column="0" IsExpanded="True" Header="Festivales" ToolTip="Festivales donde actuan los artistas" Foreground="#EEEEEE">
+                                    <ListBox x:Name="lbFestivales" ItemsSource="{Binding SelectedItem.Festivales, ElementName=lstListaArtistas}" Background="#EEEEEE" BorderBrush="Transparent" Foreground="#222831"/>
                                 </Expander>
 
-                                <Expander Grid.Column="1" IsExpanded="True" Header="Descripción" ToolTip="Descripción del artista">
-                                    <TextBox x:Name="txtDescripción" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" Margin="5" Text="{Binding SelectedItem.Descripcion, ElementName=lstListaArtistas}" Background="#E9C46A" BorderBrush="Transparent"/>
+                                <Expander Grid.Column="1" IsExpanded="True" Header="Descripción" ToolTip="Descripción del artista" Foreground="#EEEEEE">
+                                    <TextBox x:Name="txtDescripción" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" Margin="5" Text="{Binding SelectedItem.Descripcion, ElementName=lstListaArtistas}" Background="#EEEEEE" BorderBrush="Transparent" Foreground="#222831"/>
                                 </Expander>
                             </UniformGrid>
                         </GroupBox>
-                        <GroupBox Grid.Row="3" BorderBrush="#E9C46A" Grid.ColumnSpan="2">
+                        <GroupBox Grid.Row="3" BorderBrush="#EEEEEE" Grid.ColumnSpan="2">
                             <GroupBox.Header>
-                                <Border Background="#E76F51">
-                                    <TextBlock Text="Información del artista" Foreground="Black"/>
+                                <Border Background="#222831">
+                                    <TextBlock Text="Información del artista" Foreground="#EEEEEE"/>
                                 </Border>
                             </GroupBox.Header>
 
-                            <Expander Grid.Column="0" IsExpanded="True" Header="Información" ToolTip="Información sobre los artistas">
-                                <TextBox x:Name="txtInfoArtista" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" Margin="5" Text="{Binding SelectedItem.Integrantes, ElementName=lstListaArtistas}" Background="#E9C46A" BorderBrush="Transparent"/>
+                            <Expander Grid.Column="0" IsExpanded="True" Header="Información" ToolTip="Información sobre los artistas" Foreground="#EEEEEE">
+                                <TextBox x:Name="txtInfoArtista" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" Margin="5" Text="{Binding SelectedItem.Integrantes, ElementName=lstListaArtistas}" Background="#EEEEEE" BorderBrush="Transparent" Foreground="#222831"/>
                             </Expander>
                         </GroupBox>
                         <Button x:Name="btnGuardar" Grid.Row="4" Width="130" ToolTip="Pulsar para guardar" 
-                                HorizontalAlignment="Right" Margin="0,20,28,-20" Background="#E9C46A" Click="btnGuardar_Click">
+                                HorizontalAlignment="Right" Margin="0,20,28,-20" Background="#EEEEEE" Click="btnGuardar_Click">
                             <StackPanel Orientation="Horizontal">
                                 <Image Source="Images/guardar.png" Width="32" Height="32" Margin="0,0,5,0"/>
                                 <TextBlock Text="Guardar"
-                                FontSize="16" FontWeight="Bold" VerticalAlignment="Center"/>
+                                FontSize="16" FontWeight="Bold" VerticalAlignment="Center" Foreground="#222831"/>
                             </StackPanel>
                         </Button>
                     </Grid>

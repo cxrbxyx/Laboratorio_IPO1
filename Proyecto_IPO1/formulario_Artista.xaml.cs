@@ -106,7 +106,7 @@ namespace Proyecto_IPO1
         }
         private void miAcercaDe_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Aplicación realizada por Javier Garzás y Pablo Carbayo", "Acerca de");
+            MessageBox.Show("APP: FestiFest V: 1.0.0\n Fecha de realización: 17/01/2025\n Aplicación realizada por Javier Garzás y Pablo Carbayo", "Acerca de");
         }
 
         private void miEliminarItemLB_Click(object sender, RoutedEventArgs e)

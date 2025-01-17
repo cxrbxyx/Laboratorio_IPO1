@@ -39,7 +39,7 @@
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="75*"/>
             </Grid.ColumnDefinitions>
-            <ListBox x:Name="lstListaFestivales" Grid.Column="0"  SelectedIndex="0" Margin="5" Background="#36BA98" SelectionChanged="lstListaFestivales_SelectionChanged">
+            <ListBox x:Name="lstListaFestivales" Grid.Column="0"  SelectedIndex="0" Margin="5" Background="#76ABAE" SelectionChanged="lstListaFestivales_SelectionChanged">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
@@ -56,9 +56,9 @@
                         <Setter Property="Margin" Value="2"/>
                         <Style.Triggers>
                             <Trigger Property="IsSelected" Value="True">
-                                <Setter Property="Foreground" Value="Blue"/>
+                                <Setter Property="Foreground" Value="#EEEEEE"/>
                                 <Setter Property="FontWeight" Value="Bold"/>
-                                <Setter Property="BorderBrush" Value="Blue"/>
+                                <Setter Property="BorderBrush" Value="#EEEEEE"/>
                                 <Setter Property="BorderThickness" Value="3"/>
                             </Trigger>
                         </Style.Triggers>
@@ -82,12 +82,12 @@
 
             <GridSplitter Grid.Column="1" Width="5"
                         HorizontalAlignment="Stretch"/>
-            <StackPanel x:Name="spDetallesFestivales" Grid.Column="2" Orientation="Vertical" Background="#E76F51" Cursor="">
-                <GroupBox Grid.Row="1" BorderBrush="#E9C46A"
-                            Background="#E76F51" Height="674" >
+            <StackPanel x:Name="spDetallesFestivales" Grid.Column="2" Orientation="Vertical" Background="#222831" Cursor="">
+                <GroupBox Grid.Row="1" BorderBrush="#EEEEEE"
+                            Background="#222831" Height="674" >
                     <GroupBox.Header>
-                        <Border Background="#E76F51" TextBlock.FontSize="22" >
-                            <TextBlock Text="FESTIVAL" Foreground ="Black"/>
+                        <Border Background="#222831" TextBlock.FontSize="22" >
+                            <TextBlock Text="FESTIVAL" Foreground ="#EEEEEE"/>
                         </Border>
                     </GroupBox.Header>
 
@@ -100,14 +100,14 @@
                             <RowDefinition Height="50"/>
                         </Grid.RowDefinitions>
 
-                        <Border Grid.Row="0" Background="#E76F51"
+                        <Border Grid.Row="0" Background="#222831"
                                         TextBlock.FontSize="18" Grid.ColumnSpan="2" >
 
                             <WrapPanel Orientation="Horizontal">
-                                <Label Content="Nombre:" Foreground="Black"
-                                          FontSize="20"/>
+                                <Label Content="Nombre:" Foreground="#FFEEEEEE"
+                                          FontSize="20" />
                                 <TextBox x:Name="txtNombre" Width="500"
-                                           FontSize="20" Text="{Binding ElementName=lstListaFestivales,Path=SelectedItem.Nombre}" Background="#E9C46A" BorderBrush="Transparent"/>
+                                           FontSize="20" Background="#EEEEEE" BorderBrush="Transparent" Foreground="#222831" Text="{Binding SelectedItem.Nombre,ElementName=lstListaFestivales}"/>
                                 <Button x:Name="btnUsuario"
                                     Width="35" Height="35"                                         
                                        Margin="300,0,0,0" Click="btnUsuario_Click">
@@ -118,12 +118,12 @@
                             </WrapPanel>
                         </Border>
 
-                        <GroupBox  Grid.Row="1" BorderBrush="#E9C46A" 
+                        <GroupBox  Grid.Row="1" BorderBrush="#EEEEEE" 
                                 Grid.ColumnSpan="2" Margin="5,5,5,5">
 
                             <GroupBox.Header>
-                                <Border Background="#E76F51" >
-                                    <TextBlock Text="Ficha técnica" Foreground="Black"/>
+                                <Border Background="#222831" >
+                                    <TextBlock Text="Ficha técnica" Foreground="#EEEEEE"/>
                                 </Border>
                             </GroupBox.Header>
 
@@ -142,7 +142,7 @@
                                     <RowDefinition Height="Auto" />
                                 </Grid.RowDefinitions>
                                 <Grid Grid.Column="0" Grid.RowSpan="4">
-                                    <Border BorderBrush="#36BA98" Background="Transparent"
+                                    <Border BorderBrush="#EEEEEE" Background="Transparent"
                                                 BorderThickness="2" Margin="5,2,2,2" >
                                         <Image x:Name="imgCaratula"
                                                     Width="100" Height="120"                                         
@@ -155,21 +155,21 @@
                                                     VerticalAlignment="Bottom" HorizontalAlignment="Right"
                                                     Margin = "5" FontSize="30" FontWeight ="Bold"
                                                     Background="Transparent" BorderBrush="Transparent"
-                                                    Foreground="#36BA98" Click="btnCargarImagen_Click"/>
+                                                    Foreground="#EEEEEE" Click="btnCargarImagen_Click"/>
                                 </Grid>
 
-                                <Label x:Name="lblFestival" Grid.Row="0" Grid.Column="1" FontWeight="Bold" FontSize="15" Content="Contacto: "/>
-                                <TextBox x:Name="txtContacto" Grid.Row="0" Grid.Column="2" TabIndex="2" Text="{Binding SelectedItem.Contacto, ElementName=lstListaFestivales}" Background="#E9C46A" BorderBrush="Transparent" Foreground="DarkBlue" Margin="0,0,3,0" />
-                                <Label x:Name="lblWEB" Grid.Row="1" Grid.Column="1" FontSize="15" Content="web sitie: "/>
-                                <TextBox x:Name="txtweb" Grid.Column="2" Text="{Binding SelectedItem.Redes_sociales, ElementName=lstListaFestivales}" Background="#E9C46A" BorderBrush="Transparent" Foreground="DarkBlue" TextDecorations="Underline" Margin="0,32,3,32" Grid.RowSpan="3" />
-                                <Label x:Name="lblEstado" Grid.Row="2" Grid.Column="1" FontSize="15" Content="Estado: "/>
+                                <Label x:Name="lblFestival" Grid.Row="0" Grid.Column="1" FontWeight="Bold" FontSize="15" Content="Contacto: " Foreground="#FFEEEEEE" />
+                                <TextBox x:Name="txtContacto" Grid.Row="0" Grid.Column="2" TabIndex="2" Text="{Binding SelectedItem.Contacto, ElementName=lstListaFestivales}" Background="#EEEEEE" BorderBrush="Transparent" Foreground="#222831" Margin="0,0,3,0" />
+                                <Label x:Name="lblWEB" Grid.Row="1" Grid.Column="1" FontSize="15" Content="web sitie: " Foreground="#FFEEEEEE"/>
+                                <TextBox x:Name="txtweb" Grid.Column="2" Text="{Binding SelectedItem.Redes_sociales, ElementName=lstListaFestivales}" Background="#EEEEEE" BorderBrush="Transparent" Foreground="#222831" TextDecorations="Underline" Margin="0,32,3,32" Grid.RowSpan="3" />
+                                <Label x:Name="lblEstado" Grid.Row="2" Grid.Column="1" FontSize="15" Content="Estado: " Foreground="#FFEEEEEE"/>
                                 <ComboBox x:Name="cbEstado" Grid.Row="2" Grid.Column="2" Margin="0,3,3,3">
                                     <ComboBoxItem IsSelected="True">Sin definir</ComboBoxItem>
                                     <ComboBoxItem>Confirmado</ComboBoxItem>
                                     <ComboBoxItem>Cancelado</ComboBoxItem>
 
                                 </ComboBox>
-                                <Label Content="Género:" Grid.Row="3" Grid.Column="1"/>
+                                <Label Content="Género:" Grid.Row="3" Grid.Column="1" Foreground="#FFEEEEEE"/>
                                 <ComboBox x:Name="cbGenero" Grid.Row="3" Grid.Column="2" Margin="0,3,3,3">
                                     <ComboBoxItem IsSelected="True">Sin definir</ComboBoxItem>
                                     <ComboBoxItem>Rock</ComboBoxItem>
@@ -178,16 +178,16 @@
                                 </ComboBox>
                             </Grid>
                         </GroupBox>
-                        <GroupBox Grid.Row="2" BorderBrush="#E9C46A" Grid.ColumnSpan="2">
+                        <GroupBox Grid.Row="2" BorderBrush="#EEEEEE" Grid.ColumnSpan="2">
                             <GroupBox.Header>
-                                <Border Background="#E76F51" >
-                                    <TextBlock Text="Detalles" Foreground="Black"/>
+                                <Border Background="#222831" >
+                                    <TextBlock Text="Detalles" Foreground="#EEEEEE"/>
                                 </Border>
                             </GroupBox.Header>
                             <UniformGrid x:Name="ugDetalles" Columns="2" Rows="1" >
                                 <Expander Grid.Column="0" IsExpanded="True"
-                                            Header="Artistas" ToolTip="Artistas que actuan en el festival">
-                                    <ListBox x:Name="lbArtistas" ItemsSource="{Binding SelectedItem.Artistas, ElementName=lstListaFestivales}" Background="#E9C46A" BorderBrush="Transparent"
+                                            Header="Artistas" ToolTip="Artistas que actuan en el festival" Foreground="#EEEEEE">
+                                    <ListBox x:Name="lbArtistas" ItemsSource="{Binding SelectedItem.Artistas, ElementName=lstListaFestivales}" Background="#EEEEEE" BorderBrush="Transparent" Foreground="#222831"
                                         MouseDoubleClick="lbArtistas_MouseDoubleClick">
                                         <ListBox.ItemTemplate>
                                             <DataTemplate>
@@ -198,29 +198,29 @@
                                 </Expander>
                                 <Expander IsExpanded="True"
                                             Header="Descripción"
-                                            ToolTip="Descripción del festival">
+                                            ToolTip="Descripción del festival" Foreground="#EEEEEE">
                                     <TextBox x:Name="txtDescripcion"
                                                 TextWrapping="Wrap"
                                                 AcceptsReturn="True"
                                                 VerticalScrollBarVisibility="Visible"
                                                 Margin="5"
-                                                Text="{Binding SelectedItem.Descripcion, ElementName=lstListaFestivales}" Background="#E9C46A" BorderBrush="Transparent"/>
+                                                Text="{Binding SelectedItem.Descripcion, ElementName=lstListaFestivales}" Background="#EEEEEE" BorderBrush="Transparent" Foreground="#222831"/>
                                 </Expander>
                             </UniformGrid>
                         </GroupBox>
-                        <GroupBox Grid.Row="3" BorderBrush="#E9C46A" Grid.ColumnSpan="2">
+                        <GroupBox Grid.Row="3" BorderBrush="#EEEEEE" Grid.ColumnSpan="2">
                             <GroupBox.Header>
-                                <Border Background="#E76F51" >
-                                    <TextBlock Text="Información del festival" Foreground="Black"/>
+                                <Border Background="#222831" >
+                                    <TextBlock Text="Información del festival" Foreground="#EEEEEE"/>
                                 </Border>
                             </GroupBox.Header>
                             <UniformGrid x:Name="ugInformacion" Columns="2" Rows="1">
-                                <Expander Grid.Column="0" IsExpanded="True" Header="Precios" ToolTip="Precios de los abonos del festival">
+                                <Expander Grid.Column="0" IsExpanded="True" Header="Precios" ToolTip="Precios de los abonos del festival" Foreground="#EEEEEE">
                                     <ListBox x:Name="lbPrecios" Margin="5" 
-                                              Background="#E9C46A" BorderBrush="Transparent" RenderTransformOrigin="0.139,0.488" ItemsSource="{Binding SelectedItem.Precios, ElementName=lstListaFestivales}" >
+                                              Background="#EEEEEE" BorderBrush="Transparent" RenderTransformOrigin="0.139,0.488" ItemsSource="{Binding SelectedItem.Precios, ElementName=lstListaFestivales}" Foreground="#222831">
                                     </ListBox>
                                 </Expander>
-                                <Expander Grid.Column="1" IsExpanded="True" Header="Fechas" ToolTip="Fechas del festival">
+                                <Expander Grid.Column="1" IsExpanded="True" Header="Fechas" ToolTip="Fechas del festival" Foreground="#EEEEEE">
                                     <Calendar x:Name="calFechas" SelectedDatesChanged="calFechas_SelectedDatesChanged" SelectionMode="MultipleRange">
 
                                     </Calendar>
@@ -234,11 +234,11 @@
                                         Width="130"
                                         ToolTip="Pulsar para guardar"
                                         HorizontalAlignment="Right"
-                                        Margin="0,20,28,-20" Background="#E9C46A" Click="btnGuardar_Click">
+                                        Margin="0,20,28,-20" Background="#EEEEEE" Click="btnGuardar_Click">
                             <StackPanel Orientation="Horizontal">
                                 <Image Source="Images/guardar.png" Width="32" Height="32" Margin="0,0,5,0"/>
                                 <TextBlock Text="Guardar"
-                                           FontSize="16" FontWeight="Bold" VerticalAlignment="Center"/>
+                                           FontSize="16" FontWeight="Bold" VerticalAlignment="Center" Foreground="#222831"/>
                             </StackPanel>
 
                         </Button>
