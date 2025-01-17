@@ -35,6 +35,7 @@ namespace Proyecto_IPO1
                 
                 lista_artistas = CargarContenidoXML(festival);
                 lstListaArtistas.ItemsSource = lista_artistas;
+                btnGuardar.IsEnabled = false;
             }
             catch (Exception ex)
             {
@@ -159,6 +160,19 @@ namespace Proyecto_IPO1
         {
             var ventanaUsuario = new Ventana_Usuario();
             ventanaUsuario.Show();
+        }
+
+        private void btnAyuda_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Ayuda: para selecionar un artista haga click izquierdo sobre el, en el panel de la derecha si desea eliminar o añadir uno nuevo click derecho\n" +
+                "Para modificar un artista es obligatorio introducir un nombre el resto de datos son opcionales, una vez introducidos debe darle al boton guardar");
+        }
+
+        private void lstListaArtistas_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (lstListaArtistas.SelectedItem is true) { 
+                btnGuardar.IsEnabled = true;
+            }
         }
     }
 

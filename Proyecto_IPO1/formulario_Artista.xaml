@@ -27,6 +27,12 @@
             </MenuItem>
             <MenuItem Header="Ayuda" >
                 <MenuItem x:Name="miAcercaDe" Header="Acerca de..." Click="miAcercaDe_Click"/>
+                <Separator/>
+                <MenuItem x:Name="miAyuda" Header="Ayuda" Click=" btnAyuda_Click">
+                    <MenuItem.Icon>
+                        <Image Source="Images/Ayuda.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
             </MenuItem>
         </Menu>
 
@@ -36,7 +42,7 @@
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="75*"/>
             </Grid.ColumnDefinitions>
-            <ListBox x:Name="lstListaArtistas" Grid.Column="0" SelectedIndex="0" Margin="5" Background="#76ABAE">
+            <ListBox x:Name="lstListaArtistas" Grid.Column="0" SelectedIndex="0" Margin="5" Background="#76ABAE" SelectionChanged="lstListaArtistas_SelectionChanged">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
@@ -187,6 +193,14 @@
                             <StackPanel Orientation="Horizontal">
                                 <Image Source="Images/guardar.png" Width="32" Height="32" Margin="0,0,5,0"/>
                                 <TextBlock Text="Guardar"
+                                FontSize="16" FontWeight="Bold" VerticalAlignment="Center" Foreground="#222831"/>
+                            </StackPanel>
+                        </Button>
+                        <Button x:Name="btnAyuda" Grid.Row="4" Width="130" ToolTip="Pulsar para obtener ayuda" 
+                                HorizontalAlignment="Right" Margin="0,20,200,-20" Background="#EEEEEE" Click="btnAyuda_Click">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="Images/ayuda.png" Width="32" Height="32" Margin="0,0,10,0"/>
+                                <TextBlock Text="Ayuda"
                                 FontSize="16" FontWeight="Bold" VerticalAlignment="Center" Foreground="#222831"/>
                             </StackPanel>
                         </Button>
