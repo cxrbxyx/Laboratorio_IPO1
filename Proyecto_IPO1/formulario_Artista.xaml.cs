@@ -115,12 +115,15 @@ namespace Proyecto_IPO1
             var artistaSeleccionado = lstListaArtistas.SelectedItem as Artista;
             if (artistaSeleccionado != null)
             {
-                lista_artistas.Remove(artistaSeleccionado);
-                lstListaArtistas.ItemsSource = null;
-                lstListaArtistas.ItemsSource = lista_artistas;
-            }
-
-            MessageBox.Show("Artista eliminado correctamente", "Información", MessageBoxButton.OK, MessageBoxImage.Information);
+                var result = MessageBox.Show("¿Está seguro de que desea eliminar este artista?", "Confirmar eliminación", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (result == MessageBoxResult.Yes)
+                {
+                    lista_artistas.Remove(artistaSeleccionado);
+                    lstListaArtistas.ItemsSource = null;
+                    lstListaArtistas.ItemsSource = lista_artistas;
+                    MessageBox.Show("Artista eliminado correctamente", "Información", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+            } 
         }
 
         private void miAniadirItemLB_Click(object sender, RoutedEventArgs e)

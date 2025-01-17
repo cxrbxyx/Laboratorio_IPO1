@@ -102,11 +102,15 @@ namespace Proyecto_IPO1
             var festivalSeleccionado = lstListaFestivales.SelectedItem as Festival;
             if (festivalSeleccionado != null)
             {
-                Lista_festivales.Remove(festivalSeleccionado);
-                lstListaFestivales.ItemsSource = null;
-                lstListaFestivales.ItemsSource = Lista_festivales;
+                var result = MessageBox.Show("¿Está seguro de que desea eliminar este festival?", "Confirmar eliminación", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (result == MessageBoxResult.Yes)
+                {
+                    Lista_festivales.Remove(festivalSeleccionado);
+                    lstListaFestivales.ItemsSource = null;
+                    lstListaFestivales.ItemsSource = Lista_festivales;
+                    MessageBox.Show("Festival eliminado correctamente.", "Información", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
             }
-            MessageBox.Show("Festival eliminado correctamente.", "Información", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
         private void miAniadirItemLB_Click(object sender, RoutedEventArgs e)
