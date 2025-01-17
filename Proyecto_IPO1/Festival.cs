@@ -12,7 +12,7 @@ namespace Proyecto_IPO1
         public string Nombre { set; get; }
         public List<String>  Fechas { set; get; }
         public List<Artista> Artistas { set; get; }
-        public Uri Redes_sociales { set; get; }
+        public string Redes_sociales { set; get; }
         public List<String> Precios { set; get; }
         public Uri Caratula { set; get; }
         public string Estado { set; get; }
@@ -21,8 +21,9 @@ namespace Proyecto_IPO1
         public string Descripcion { set; get; }
 
         public string Contacto { set; get; }
+        public string Genero { set; get; }
 
-        public Festival(string nombre, List<String> fechas, List<Artista> artistas, Uri redes_sociales, List<string> precios, Uri caratula, string estado, Uri cartelera, string descripcion)
+        public Festival(string nombre, List<String> fechas, List<Artista> artistas, string redes_sociales, List<string> precios, Uri caratula, string estado, Uri cartelera, string descripcion, string genero)
         {
             Nombre = nombre;
             Fechas = fechas;
@@ -33,6 +34,7 @@ namespace Proyecto_IPO1
             Estado = estado;
             Cartelera = cartelera;
             Descripcion = descripcion;
+            Genero = genero;
         }
 
     }

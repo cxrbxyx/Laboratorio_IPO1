@@ -48,10 +48,10 @@ namespace Proyecto_IPO1
 
             foreach (XmlNode node in database.DocumentElement.ChildNodes)
             {
-                var festival = new Festival("", null, null, null, null, null, "", null, null)
+                var festival = new Festival("", null, null, null, null, null, "", null, null, null)
                 {
                     Nombre = node.Attributes["Nombre"].Value,
-                    Redes_sociales = new Uri(node.Attributes["Redes_sociales"].Value, UriKind.Absolute),
+                    Redes_sociales = node.Attributes["Redes_sociales"].Value,
                     Fechas = node.Attributes["Fechas"].Value.Split(',').ToList(),
                     Artistas = node.Attributes["Artistas"].Value.Split(',').Select(a => new Artista(a, null, null, null, null, null, null, null, null)).ToList(),
                     Precios = node.Attributes["Precios"].Value.Split(',').ToList(),
@@ -59,6 +59,7 @@ namespace Proyecto_IPO1
                     Estado = node.Attributes["Estado"].Value,
                     Descripcion = node.Attributes["Descripcion"].Value,
                     Cartelera = new Uri(node.Attributes["Cartelera"].Value, UriKind.Relative),
+                    Genero = null
 
                 };
                 string nombreFestival = festival.Nombre.Replace(" ", "_");
@@ -68,27 +69,27 @@ namespace Proyecto_IPO1
             }
             return listado;
         }
-
-        private void txtDescripción_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
+        
 
         private void lbArtistas_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            if (lstListaFestivales.SelectedItem is Festival artistaSeleccionado)
+            if (lstListaFestivales.SelectedItem is Festival festivalSeleccionado )
             {
-                // Lógica para abrir la página del artista en el formulario de artistas
-                AbrirFormularioArtista(artistaSeleccionado);
+                if (festivalSeleccionado.Artistas is null)
+                {
+                    MessageBox.Show("No hay artistas para este festival.", "Información", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                else
+                {
+                    AbrirFormularioArtista(festivalSeleccionado);
+                }
             }
         }
 
         private void AbrirFormularioArtista(Festival festival)
         {
-            // Aquí puedes implementar la lógica para abrir el formulario de artistas
-            // y pasarle el objeto artistaSeleccionado. Por ejemplo:
-            var formularioArtistas = new formulario_Artista(festival);
-            formularioArtistas.Show();
+                var formularioArtistas = new formulario_Artista(festival);
+                formularioArtistas.Show();
         }
 
         private void miSalir_Click(object sender, RoutedEventArgs e)
@@ -105,6 +106,7 @@ namespace Proyecto_IPO1
                 lstListaFestivales.ItemsSource = null;
                 lstListaFestivales.ItemsSource = Lista_festivales;
             }
+            MessageBox.Show("Festival eliminado correctamente.", "Información", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
         private void miAniadirItemLB_Click(object sender, RoutedEventArgs e)
@@ -125,7 +127,7 @@ namespace Proyecto_IPO1
                 precios.Clear();
             }
 
-            var festival = new Festival("", null, null, null, null, null, "", null, null);
+            var festival = new Festival("", null, null, null, null, null, "", null, null,null);
             Lista_festivales.Add(festival);
             lstListaFestivales.ItemsSource = null;
             lstListaFestivales.ItemsSource = Lista_festivales;
@@ -143,18 +145,23 @@ namespace Proyecto_IPO1
 
                 festivalSeleccionado.Nombre = txtNombre.Text;
                 festivalSeleccionado.Contacto = txtNombre.Text.ToLower().Replace(" ","_")+"@festigest.com";
-                festivalSeleccionado.Redes_sociales = string.IsNullOrWhiteSpace(txtweb.Text) ? null : new Uri(txtweb.Text, UriKind.Absolute);
+                festivalSeleccionado.Redes_sociales = txtweb.Text;
                 festivalSeleccionado.Descripcion = txtDescripcion.Text;
-                festivalSeleccionado.Estado = "";
-
+                festivalSeleccionado.Estado = cbEstado.Text;
+                festivalSeleccionado.Fechas = calFechas.SelectedDates.Select(d => d.ToString("dd/MM/yyyy")).ToList();
+                festivalSeleccionado.Caratula = new Uri(imgCaratula.Source.ToString());
+                festivalSeleccionado.Genero = cbGenero.Text;
                 // Actualiza la lista de festivales para reflejar los cambios en la UI
                 lstListaFestivales.ItemsSource = null;
                 lstListaFestivales.ItemsSource = Lista_festivales;
+
+                MessageBox.Show("Cambios guardados correctamente.", "Información", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else
             {
                 MessageBox.Show("Por favor, seleccione un festival de la lista para guardar los cambios.", "Advertencia", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
+
         }
 
         private void calFechas_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
@@ -162,15 +169,19 @@ namespace Proyecto_IPO1
             if (lstListaFestivales.SelectedItem is Festival festivalSeleccionado)
             {
                 festivalSeleccionado.Fechas = calFechas.SelectedDates.Select(d => d.ToString("dd/MM/yyyy")).ToList();
+
             }
         }
+
+        // ...
 
         private void lstListaFestivales_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (lstListaFestivales.SelectedItem is Festival festivalSeleccionado)
             {
                 calFechas.SelectedDates.Clear();
-                if(festivalSeleccionado.Fechas != null) { 
+                if (festivalSeleccionado.Fechas != null)
+                {
                     foreach (var fecha in festivalSeleccionado.Fechas)
                     {
                         if (DateTime.TryParseExact(fecha, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime date))
@@ -179,6 +190,13 @@ namespace Proyecto_IPO1
                         }
                     }
                 }
+                txtNombre.Text = festivalSeleccionado.Nombre;
+                if(festivalSeleccionado.Caratula != null)
+                {
+                    imgCaratula.Source = new BitmapImage(festivalSeleccionado.Caratula);
+                }
+                cbEstado.Text = festivalSeleccionado.Estado;
+                cbGenero.Text = festivalSeleccionado.Genero;
             }
         }
 
@@ -190,7 +208,7 @@ namespace Proyecto_IPO1
 
         private void miAcercaDe_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("APP: FestiFest V: 1.0.0\n Fecha de realización: 17/01/2025\n Aplicación realizada por Javier Garzás y Pablo Carbayo", "Acerca de");
+            MessageBox.Show("APP: GestiFest V: 1.0.0\n Fecha de realización: 17/01/2025\n Aplicación realizada por Javier Garzás y Pablo Carbayo", "Acerca de");
         }
 
         private void btnCargarImagen_Click(object sender, RoutedEventArgs e)
@@ -209,6 +227,17 @@ namespace Proyecto_IPO1
                     MessageBox.Show("Error al cargar la imagen " + ex.Message);
                 }
             }
+        }
+
+        private void btnAyuda_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("1. Para selecionar un festival haga click izquierdo sobre el en el panel de la izquierda.\n" +
+                "2. Si desea eliminar o añadir uno nuevo haga click derecho en el panel izquierdo.\n2a. Añandir item añade un festival nuevo vacío. Una vez creado se debe " +
+                "modificar los apartados correspondientes." +
+                "3. Para modificar un festival es obligatorio introducir un nombre el resto de datos son opcionales, una vez introducidos debe darle al boton guardar\n" +
+                "3.a Los artistas, precios y fechas no se pueden ni añadir ni modificar debido a la implementación del programa.\n" +
+                "4. El contacto de un festival se autocompletará de la siguiente manera: <nombre>@festigest.com\n" +
+                "5. Para cerrar sesión haga click en su foto de perfil situada en la esquina superior derecha.");
         }
     }
 }

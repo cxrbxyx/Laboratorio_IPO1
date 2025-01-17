@@ -281,5 +281,8 @@
   <ItemGroup>
     <Resource Include="images\ayuda.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\icono_apagado.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -61,7 +61,7 @@ namespace Proyecto_IPO1
                     Descripcion = node.Attributes["Descripcion"].Value,
                     Caratula = new Uri(node.Attributes["Caratula"].Value, UriKind.Relative),
                     Contacto = node.Attributes["Contacto"].Value,
-                    Estado = node.Attributes["Estado"].Value,
+                    Estado = "Confirmado",
                     Festivales = new List<string>(),
                 };
 
@@ -107,7 +107,7 @@ namespace Proyecto_IPO1
         }
         private void miAcercaDe_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("APP: FestiFest V: 1.0.0\n Fecha de realización: 17/01/2025\n Aplicación realizada por Javier Garzás y Pablo Carbayo", "Acerca de");
+            MessageBox.Show("APP: GestiFest V: 1.0.0\n Fecha de realización: 17/01/2025\n Aplicación realizada por Javier Garzás y Pablo Carbayo", "Acerca de");
         }
 
         private void miEliminarItemLB_Click(object sender, RoutedEventArgs e)
@@ -119,6 +119,8 @@ namespace Proyecto_IPO1
                 lstListaArtistas.ItemsSource = null;
                 lstListaArtistas.ItemsSource = lista_artistas;
             }
+
+            MessageBox.Show("Artista eliminado correctamente", "Información", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
         private void miAniadirItemLB_Click(object sender, RoutedEventArgs e)
@@ -164,15 +166,28 @@ namespace Proyecto_IPO1
 
         private void btnAyuda_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Ayuda: para selecionar un artista haga click izquierdo sobre el, en el panel de la derecha si desea eliminar o añadir uno nuevo click derecho\n" +
-                "Para modificar un artista es obligatorio introducir un nombre el resto de datos son opcionales, una vez introducidos debe darle al boton guardar");
+            MessageBox.Show("1. Para selecionar un artista haga click izquierdo sobre el en el panel de la izquierda.\n" +
+                "2. Si desea eliminar o añadir uno nuevo haga click derecho en el panel izquierdo.\n2a. Añandir item añade un artista nuevo vacío. Una vez creado se debe " +
+                "modificar los apartados correspondientes." +
+                "3. Para modificar un artista es obligatorio introducir un nombre el resto de datos son opcionales, una vez introducidos debe darle al boton guardar\n" +
+                "3.a Los festivales no se pueden añadir ni modificar debido a la implementación del programa.\n" +
+                "4. Para cerrar sesión haga click en su foto de perfil situada en la esquina superior derecha.");
         }
 
         private void lstListaArtistas_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (lstListaArtistas.SelectedItem is true) { 
+            if(lstListaArtistas.SelectedItem is Artista artistaSeleccionado)
+            {
                 btnGuardar.IsEnabled = true;
+                txtNombre.Text = artistaSeleccionado.Nombre;
+                if (artistaSeleccionado.Caratula != null)
+                {
+                    imgCaratula.Source = new BitmapImage(artistaSeleccionado.Caratula);
+                }
+                cbEstado.Text = artistaSeleccionado.Estado;
+                cbGenero.Text = artistaSeleccionado.Genero;
             }
+
         }
     }
 

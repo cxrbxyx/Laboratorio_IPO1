@@ -24,10 +24,20 @@
                     </MenuItem.Icon>
                 </MenuItem>
                 <Separator/>
-                <MenuItem x:Name="miSalir" Header="Salir" Click="miSalir_Click"/>
+                <MenuItem x:Name="miSalir" Header="Salir" Click="miSalir_Click">
+                    <MenuItem.Icon>
+                        <Image Source="Images/icono_apagado.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
             </MenuItem>
             <MenuItem Header="Ayuda" >
-                <MenuItem x:Name="miAcercaDe" Header="Acerca de..." Click="miAcercaDe_Click" />
+                <MenuItem x:Name="miAyuda" Header="Ayuda" Click=" btnAyuda_Click">
+                    <MenuItem.Icon>
+                        <Image Source="Images/Ayuda.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <Separator/>
+                <MenuItem x:Name="miAcercaDe" Header="Acerca de..." Click="miAcercaDe_Click"/>
             </MenuItem>
         </Menu>
 
@@ -39,6 +49,7 @@
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="75*"/>
             </Grid.ColumnDefinitions>
+
             <ListBox x:Name="lstListaFestivales" Grid.Column="0"  SelectedIndex="0" Margin="5" Background="#76ABAE" SelectionChanged="lstListaFestivales_SelectionChanged">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
@@ -52,7 +63,7 @@
                     </DataTemplate>
                 </ListBox.ItemTemplate>
                 <ListBox.ItemContainerStyle>
-                    <Style TargetType="ListBoxItem">
+                    <Style TargetType="{x:Type ListBoxItem}">
                         <Setter Property="Margin" Value="2"/>
                         <Style.Triggers>
                             <Trigger Property="IsSelected" Value="True">
@@ -107,7 +118,7 @@
                                 <Label Content="Nombre:" Foreground="#FFEEEEEE"
                                           FontSize="20" />
                                 <TextBox x:Name="txtNombre" Width="500"
-                                           FontSize="20" Background="#EEEEEE" BorderBrush="Transparent" Foreground="#222831" Text="{Binding SelectedItem.Nombre,ElementName=lstListaFestivales}"/>
+                                           FontSize="20" Background="#EEEEEE" BorderBrush="Transparent" Foreground="#222831" Text="{Binding SelectedItem.Nombre, ElementName=lstListaFestivales}"/>
                                 <Button x:Name="btnUsuario"
                                     Width="35" Height="35"                                         
                                        Margin="300,0,0,0" Click="btnUsuario_Click">
@@ -164,17 +175,17 @@
                                 <TextBox x:Name="txtweb" Grid.Column="2" Text="{Binding SelectedItem.Redes_sociales, ElementName=lstListaFestivales}" Background="#EEEEEE" BorderBrush="Transparent" Foreground="#222831" TextDecorations="Underline" Margin="0,32,3,32" Grid.RowSpan="3" />
                                 <Label x:Name="lblEstado" Grid.Row="2" Grid.Column="1" FontSize="15" Content="Estado: " Foreground="#FFEEEEEE"/>
                                 <ComboBox x:Name="cbEstado" Grid.Row="2" Grid.Column="2" Margin="0,3,3,3">
-                                    <ComboBoxItem IsSelected="True">Sin definir</ComboBoxItem>
-                                    <ComboBoxItem>Confirmado</ComboBoxItem>
-                                    <ComboBoxItem>Cancelado</ComboBoxItem>
+                                    <ComboBoxItem IsSelected="True" Content="Sin definir"/>
+                                    <ComboBoxItem Content="Confirmado"/>
+                                    <ComboBoxItem Content="Cancelado"/>
 
                                 </ComboBox>
                                 <Label Content="Género:" Grid.Row="3" Grid.Column="1" Foreground="#FFEEEEEE"/>
                                 <ComboBox x:Name="cbGenero" Grid.Row="3" Grid.Column="2" Margin="0,3,3,3">
-                                    <ComboBoxItem IsSelected="True">Sin definir</ComboBoxItem>
-                                    <ComboBoxItem>Rock</ComboBoxItem>
-                                    <ComboBoxItem>Urbano</ComboBoxItem>
-                                    <ComboBoxItem>Pop</ComboBoxItem>
+                                    <ComboBoxItem IsSelected="True" Content="Sin definir"/>
+                                    <ComboBoxItem Content="Rock"/>
+                                    <ComboBoxItem Content="Urbano"/>
+                                    <ComboBoxItem Content="Pop"/>
                                 </ComboBox>
                             </Grid>
                         </GroupBox>
@@ -217,13 +228,10 @@
                             <UniformGrid x:Name="ugInformacion" Columns="2" Rows="1">
                                 <Expander Grid.Column="0" IsExpanded="True" Header="Precios" ToolTip="Precios de los abonos del festival" Foreground="#EEEEEE">
                                     <ListBox x:Name="lbPrecios" Margin="5" 
-                                              Background="#EEEEEE" BorderBrush="Transparent" RenderTransformOrigin="0.139,0.488" ItemsSource="{Binding SelectedItem.Precios, ElementName=lstListaFestivales}" Foreground="#222831">
-                                    </ListBox>
+                                              Background="#EEEEEE" BorderBrush="Transparent" RenderTransformOrigin="0.139,0.488" ItemsSource="{Binding SelectedItem.Precios, ElementName=lstListaFestivales}" Foreground="#222831"/>
                                 </Expander>
                                 <Expander Grid.Column="1" IsExpanded="True" Header="Fechas" ToolTip="Fechas del festival" Foreground="#EEEEEE">
-                                    <Calendar x:Name="calFechas" SelectedDatesChanged="calFechas_SelectedDatesChanged" SelectionMode="MultipleRange">
-
-                                    </Calendar>
+                                    <Calendar x:Name="calFechas" SelectedDatesChanged="calFechas_SelectedDatesChanged" SelectionMode="MultipleRange"/>
                                 </Expander>
 
 
@@ -241,6 +249,14 @@
                                            FontSize="16" FontWeight="Bold" VerticalAlignment="Center" Foreground="#222831"/>
                             </StackPanel>
 
+                        </Button>
+                        <Button x:Name="btnAyuda" Grid.Row="4" Width="130" ToolTip="Pulsar para obtener ayuda" 
+                                HorizontalAlignment="Right" Margin="0,20,200,-20" Background="#EEEEEE" Click="btnAyuda_Click">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="Images/ayuda.png" Width="32" Height="32" Margin="0,0,10,0"/>
+                                <TextBlock Text="Ayuda"
+                                FontSize="16" FontWeight="Bold" VerticalAlignment="Center" Foreground="#222831"/>
+                            </StackPanel>
                         </Button>
                     </Grid>
                 </GroupBox>

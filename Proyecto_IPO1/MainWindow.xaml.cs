@@ -113,8 +113,9 @@ namespace Proyecto_IPO1
 
         private void btnAyuda_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Ayuda: Ventana login debes introducir tu correo de usuario en la casilla usuario\n" +
-                "Una vez introducido el usuario introduzca la contraseña en la casilla de abajo, una vez hecho todo dale al boton iniciar sesión");
+            MessageBox.Show("1. Las credenciales son admin:admin\n" +
+                "2. Una vez introducido el usuario presione la tecla Enter para activar el campo de contraseña.\n" +
+                "3. Una vez introducidas las credenciales, clicke el botón iniciar sesión para acceder al programa.");
         }
 
 

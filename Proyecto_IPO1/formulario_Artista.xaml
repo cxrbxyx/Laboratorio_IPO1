@@ -23,16 +23,20 @@
                     </MenuItem.Icon>
                 </MenuItem>
                 <Separator/>
-                <MenuItem x:Name="miSalir" Header="Salir" Click="miSalir_Click"/>
+                <MenuItem x:Name="miSalir" Header="Salir" Click="miSalir_Click">
+                    <MenuItem.Icon>
+                        <Image Source="Images/icono_apagado.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
             </MenuItem>
             <MenuItem Header="Ayuda" >
-                <MenuItem x:Name="miAcercaDe" Header="Acerca de..." Click="miAcercaDe_Click"/>
-                <Separator/>
                 <MenuItem x:Name="miAyuda" Header="Ayuda" Click=" btnAyuda_Click">
                     <MenuItem.Icon>
                         <Image Source="Images/Ayuda.png"/>
                     </MenuItem.Icon>
                 </MenuItem>
+                <Separator/>
+                <MenuItem x:Name="miAcercaDe" Header="Acerca de..." Click="miAcercaDe_Click"/>
             </MenuItem>
         </Menu>
 
