@@ -284,5 +284,11 @@
   <ItemGroup>
     <Resource Include="images\icono_apagado.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\add_c.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\remove_c.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -70,7 +70,7 @@
                 </ListBox.ItemContainerStyle>
                 <ListBox.ContextMenu>
                     <ContextMenu>
-                        <MenuItem x:Name="miAniadirItemLB" Header="Añadir ítem">
+                        <MenuItem x:Name="miAniadirItemLB" Header="Añadir ítem" Click="miAniadirItemLB_Click">
                             <MenuItem.Icon>
                                 <Image Source="images/add_c.png"/>
                             </MenuItem.Icon>
