@@ -75,7 +75,8 @@
                  Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2"  
                  BorderThickness="2" 
                  Margin="5" 
-                 VerticalContentAlignment="Center" TabIndex="1" KeyDown="TxtUsuario_KeyDown" />
+                 VerticalContentAlignment="Center" TabIndex="1" KeyDown="TxtUsuario_KeyDown" 
+                 ToolTip="Introduzca su correro electronico: ...@gmail.com, ...@outlook.es"/>
         <Label x:Name="lblContrasena" 
                Grid.Row="4" Grid.Column="2"  
                Content="Contraseña" 
@@ -96,7 +97,8 @@
                 PasswordChar="*"
                 BorderThickness="2" 
                 Margin="5"  VerticalContentAlignment="Center" TabIndex="2"
-                IsEnabled="False" GotFocus="passContrasena_GotFocus" />
+                IsEnabled="False" GotFocus="passContrasena_GotFocus" 
+                ToolTip="Introduzca su contraseña aqui"/>
         <Button x:Name="btnLogin" 
                 Grid.Row="6" Grid.Column="2" Grid.ColumnSpan="2" 
                 Content="Iniciar Sesión" 
@@ -112,7 +114,8 @@
                 Width="40
                 " Height="40" 
                 Margin="0,0,22,5"
-                TabIndex ="3">
+                TabIndex ="3"
+                Click="btnAyuda_Click">
                 <StackPanel Orientation="Horizontal">
                 <Image Source="Images/ayuda.png" Width="32" Height="32" Margin="0,0,0,0"/>
             </StackPanel>
